@@ -21,7 +21,17 @@ package
 		{
 			x = bx;
 			y = by;
-			velocity.x = -speed;
+			offset.y = -6;
+			if (Registry.player.facing == 1)
+			{
+				offset.x = 2;
+				velocity.x = -speed;
+			}
+			else
+			{
+				offset.x = -12;
+				velocity.x = speed;
+			}
 			exists = true;
 		}
 		

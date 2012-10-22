@@ -21,9 +21,7 @@ package
 			if (getFirstAvailable())
 			{
 				Bullet(getFirstAvailable()).fire(Registry.player.x, Registry.player.y);
-				trace(Registry.player.x);
 			}
-			
 		}
 		
 	}

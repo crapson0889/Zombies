@@ -2,7 +2,7 @@ package {
 	import org.flixel.*;
 
 	public class Light extends FlxSprite {
-		[Embed(source="/../assets/Light.png")]
+		[Embed(source="/../assets/light.png")]
 		private var LightImageClass:Class;
 
 		private var darkness:FlxSprite;

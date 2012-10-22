@@ -9,6 +9,8 @@ package
 		//Registry.player = new Player;
 		//Registry.bullets = new BulletManager;
 		
+		private var supply:Supply;
+		
 		//Programatically added platforms - these will be removed when map is created
 		private var floor:FlxTileblock;
 		private var leftPlatform: FlxTileblock;
@@ -35,6 +37,9 @@ package
 			
 			add(Registry.player);
 			add(Registry.bullets);
+			
+			supply = new Supply();
+			add(supply);
 			
 			//Creating platforms and adding them
 			floor = new FlxTileblock(0, 240, 320, 16);
@@ -80,6 +85,8 @@ package
 			FlxG.collide(Registry.player, rightPlatform);
 			FlxG.collide(Registry.player, middlePlatform);
 			
+			FlxG.overlap(Registry.player, supply, hitSupply);
+			
 			//Keep the light on the Player
 			light.x = Registry.player.x + 5;
 			light.y = Registry.player.y + 5;
@@ -89,6 +96,11 @@ package
 			//darkness.fill(0xff000000);
 			darkness.fill(0xff222222);
 			super.draw();
+		}
+		
+		private function hitSupply(player:FlxObject, supply:FlxObject):void 
+		{
+			supply.kill();
 		}
 	}
 
