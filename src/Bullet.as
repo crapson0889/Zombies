@@ -1,6 +1,6 @@
 package  
 {
-	import org.flixel.FlxSprite;
+	import org.flixel.*;
 
 	public class Bullet extends FlxSprite
 	{
@@ -40,9 +40,10 @@ package
 			super.update();
 			
 			//	Bullet off the top of the screen?
-			if (exists && y < -height)
+			if (exists)
 			{
-				exists = false;
+				if(x < 0 || x > FlxG.width)
+					exists = false;
 			}
 		}
 		

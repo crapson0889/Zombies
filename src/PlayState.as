@@ -11,11 +11,15 @@ package
 		
 		private var supply:Supply;
 		
+		private var debug:FlxText;
+		
 		//Programatically added platforms - these will be removed when map is created
 		private var floor:FlxTileblock;
 		private var leftPlatform: FlxTileblock;
 		private var rightPlatform: FlxTileblock;
 		private var middlePlatform: FlxTileblock;
+		
+		private var zombieTimer: FlxTimer;
 		
 		//Darkness overlay and lighting immediately around the Player
 		private var darkness:FlxSprite;
@@ -28,18 +32,29 @@ package
 		override public function create():void
 		{
 			Registry.bullets = new BulletManager;
+			Registry.zombies = new ZombieManager;
+			Registry.fx = new Fx;
 			
 			//Setting the Background Color
 			FlxG.bgColor = 0xff444444;
 			
 			//Creating the Player and adding
-			Registry.player = new Player(32, 32);
+			Registry.player = new Player(32, 170);
 			
 			add(Registry.player);
 			add(Registry.bullets);
+			add(Registry.zombies);
+			add(Registry.fx);
+			
+			zombieTimer = new FlxTimer();
+			//Registry.zombies.drop();
+			zombieTimer.start(1, 0, Registry.zombies.drop);
 			
 			supply = new Supply();
 			add(supply);
+			
+			debug = new FlxText(0, 0, 200, "");
+			add(debug);
 			
 			//Creating platforms and adding them
 			floor = new FlxTileblock(0, 240, 320, 16);
@@ -79,11 +94,20 @@ package
 		{
 			super.update();
 			
+			debug.text = "Bullet Pool: " + Registry.zombies.countLiving() + "/" + Registry.zombies.maxSize;
+			
 			//If user collides with platform... collide
 			FlxG.collide(Registry.player, floor);
 			FlxG.collide(Registry.player, leftPlatform);
 			FlxG.collide(Registry.player, rightPlatform);
 			FlxG.collide(Registry.player, middlePlatform);
+			
+			FlxG.collide(Registry.zombies, floor);
+			FlxG.collide(Registry.zombies, leftPlatform);
+			FlxG.collide(Registry.zombies, rightPlatform);
+			FlxG.collide(Registry.zombies, middlePlatform);
+			
+			FlxG.overlap(Registry.zombies, Registry.bullets, Registry.zombies.bulletHitZombie);
 			
 			FlxG.overlap(Registry.player, supply, hitSupply);
 			
