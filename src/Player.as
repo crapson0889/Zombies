@@ -85,5 +85,9 @@ package
 			}
 		}
 		
+		public function zombieHitPlayer(player:FlxObject, zombie:FlxObject):void
+		{
+			kill();
+		}
 	}
 }

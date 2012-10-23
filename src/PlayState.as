@@ -33,7 +33,7 @@ package
 		{
 			Registry.bullets = new BulletManager;
 			Registry.zombies = new ZombieManager;
-			Registry.fx = new Fx;
+			Registry.splatters = new SplatterManager;
 			
 			//Setting the Background Color
 			FlxG.bgColor = 0xff444444;
@@ -41,17 +41,19 @@ package
 			//Creating the Player and adding
 			Registry.player = new Player(32, 170);
 			
+			//Add the Registry classes
 			add(Registry.player);
 			add(Registry.bullets);
 			add(Registry.zombies);
-			add(Registry.fx);
+			add(Registry.splatters);
 			
+			//Spits out the zombies
 			zombieTimer = new FlxTimer();
-			//Registry.zombies.drop();
-			zombieTimer.start(1, 0, Registry.zombies.drop);
+			zombieTimer.start(2, 0, Registry.zombies.drop);
 			
-			supply = new Supply();
-			add(supply);
+			// Not used yet
+			//supply = new Supply();
+			//add(supply);
 			
 			debug = new FlxText(0, 0, 200, "");
 			add(debug);
@@ -94,7 +96,7 @@ package
 		{
 			super.update();
 			
-			debug.text = "Bullet Pool: " + Registry.zombies.countLiving() + "/" + Registry.zombies.maxSize;
+			debug.text = "Splatter Pool: " + Registry.splatters.countLiving() + "/" + Registry.zombies.maxSize;
 			
 			//If user collides with platform... collide
 			FlxG.collide(Registry.player, floor);
@@ -107,7 +109,14 @@ package
 			FlxG.collide(Registry.zombies, rightPlatform);
 			FlxG.collide(Registry.zombies, middlePlatform);
 			
+			FlxG.collide(Registry.splatters, floor);
+			FlxG.collide(Registry.splatters, leftPlatform);
+			FlxG.collide(Registry.splatters, rightPlatform);
+			FlxG.collide(Registry.splatters, middlePlatform);
+			    
 			FlxG.overlap(Registry.zombies, Registry.bullets, Registry.zombies.bulletHitZombie);
+			
+			FlxG.overlap(Registry.player, Registry.zombies, Registry.player.zombieHitPlayer);
 			
 			FlxG.overlap(Registry.player, supply, hitSupply);
 			

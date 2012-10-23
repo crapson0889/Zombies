@@ -1,5 +1,8 @@
 package  
 {
+	/*
+	 * 	The handler for all the Zombies in the game
+	 * */
 	import org.flixel.*;
 	
 	public class ZombieManager extends FlxGroup
@@ -9,11 +12,11 @@ package
 		public function ZombieManager() 
 		{
 			super();
-			maxSize = 5;
+			maxSize = Registry.zombieCount;
 			
 			currentDirection = 1;
 			
-			for (var i:int = 0; i < 7; i++)
+			for (var j:int = 0; j < Registry.zombieCount; j++)
 			{
 				add(new Zombie);
 			}
@@ -27,18 +30,14 @@ package
 			{
 				Zombie(getFirstAvailable()).drop(170, 0, currentDirection);
 			}
-			else {
-				trace("whoops");
-			}
 		}
 		
-		public function bulletHitZombie(bullet:FlxObject, zombie:FlxObject):void 
+		public function bulletHitZombie(zombie:Zombie, bullet:Bullet):void 
 		{
-			bullet.kill();
+			bullet.exists = false;
+			zombie.exists = false;
 			
-			zombie.kill();
-			trace(zombie.x, zombie.y);
-			Registry.fx.explodeBlock(zombie.x, zombie.y);
+			Registry.splatters.explode(zombie.x, zombie.y, bullet.direction);
 		}
 	}
 }

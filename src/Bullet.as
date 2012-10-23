@@ -1,5 +1,8 @@
 package  
 {
+	/*
+	 *	Handles basic functions of a single bullet
+	 * */
 	import org.flixel.*;
 
 	public class Bullet extends FlxSprite
@@ -8,6 +11,7 @@ package
 		
 		public var damage:int = 1;
 		public var speed:int = 300;
+		public var direction:int = 0;
 		
 		public function Bullet() 
 		{
@@ -26,11 +30,13 @@ package
 			{
 				offset.x = 2;
 				velocity.x = -speed;
+				direction = -1;
 			}
 			else
 			{
 				offset.x = -12;
 				velocity.x = speed;
+				direction = 1;
 			}
 			exists = true;
 		}

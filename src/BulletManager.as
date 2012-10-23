@@ -1,5 +1,8 @@
 package  
 {
+	/*
+	 *	Handles all of the bullets in the game
+	 * */
 	import org.flixel.*;
 
 	public class BulletManager extends FlxGroup

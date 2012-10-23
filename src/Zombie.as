@@ -1,5 +1,8 @@
 package  
 {
+	/*
+	 * The basic enemy of the game
+	 * */
 	import org.flixel.*;
 	
 	public class Zombie extends FlxSprite
@@ -8,12 +11,10 @@ package
 		
 		public var speed:int = 50;
 		public var gravity:int = 100;
-		public var splatter:FlxEmitter;
 		
 		public function Zombie() 
 		{
 			super(0, 0, zombiePNG);
-			
 			exists = false;
 		}
 		

@@ -1,4 +1,8 @@
-package {
+package 
+{
+	/*
+	 *	The lit up area immediately surrounding the player.
+	 * */
 	import org.flixel.*;
 
 	public class Light extends FlxSprite {

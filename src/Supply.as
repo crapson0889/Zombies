@@ -1,5 +1,8 @@
 package  
 {
+	/*
+	 * 	A single supply box instance
+	 * */
 	import org.flixel.FlxSprite;
 	
 	public class Supply extends FlxSprite
