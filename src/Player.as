@@ -41,13 +41,12 @@ package
 			FlxControl.create(this, FlxControlHandler.MOVEMENT_ACCELERATES, FlxControlHandler.STOPPING_DECELERATES, 1, true, false);
 			
 			//	Sprite will be controlled with the left and right cursor keys
-			FlxControl.player1.setCursorControl(false, false, true, true);
+			FlxControl.player1.setWASDControl(false, false, true, true);
 			
 			//	And SPACE BAR will make them jump up to a maximum of 200 pixels (per second), only when touching the FLOOR
 			FlxControl.player1.setJumpButton("SPACE", FlxControlHandler.KEYMODE_PRESSED, 200, FlxObject.FLOOR, 250, 200);
 			
-			FlxControl.player1.setFireButton("A", FlxControlHandler.KEYMODE_JUST_DOWN, 0, Registry.bullets.fire);
-			//FlxControl.player1.setFireButton("CONTROL", FlxControlHandler.KEYMODE_JUST_DOWN, 0, Registry.bullets.fire);
+			FlxControl.player1.setFireButton("CONTROL", FlxControlHandler.KEYMODE_JUST_DOWN, 0, Registry.bullets.fire);
 			
 			//	Stop the player running off the edge of the screen and falling into nothing
 			FlxControl.player1.setBounds(16, 0, 288, 240);

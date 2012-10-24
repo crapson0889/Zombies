@@ -26,6 +26,13 @@ package
 				Bullet(getFirstAvailable()).fire(Registry.player.x, Registry.player.y);
 			}
 		}
+
+		public function bulletHitTile(bullet:Bullet, tile:FlxTileblock):void 
+		{
+			bullet.exists = false;
+			bullet.kill();
+			add(new Bullet());
+		}
 		
 	}
 

@@ -4,11 +4,6 @@ package
 	
 	public class PlayState extends FlxState
 	{	
-		//Player class handling our hero
-		//private var player:Player;
-		//Registry.player = new Player;
-		//Registry.bullets = new BulletManager;
-		
 		private var supply:Supply;
 		
 		private var debug:FlxText;
@@ -55,9 +50,6 @@ package
 			//supply = new Supply();
 			//add(supply);
 			
-			debug = new FlxText(0, 0, 200, "");
-			add(debug);
-			
 			//Creating platforms and adding them
 			floor = new FlxTileblock(0, 240, 320, 16);
 			floor.makeGraphic(340, 16, 0xffA63E00);
@@ -89,7 +81,11 @@ package
 			
 			//Adding the Darkness
 			//Important that the Darkness is created before the light, but added after the light... Don't mess with it
-			//add(darkness);		//Commenting out this line will remove the darkness
+			add(darkness);		//Commenting out this line will remove the darkness
+			
+			//Add anything after darkness that you dont want to get darkened
+			debug = new FlxText(0, 0, 200, "");
+			add(debug);
 		}
 		
 		override public function update():void
@@ -119,6 +115,11 @@ package
 			FlxG.overlap(Registry.player, Registry.zombies, Registry.player.zombieHitPlayer);
 			
 			FlxG.overlap(Registry.player, supply, hitSupply);
+			
+			FlxG.overlap(Registry.bullets, floor, Registry.bullets.bulletHitTile);
+			FlxG.overlap(Registry.bullets, leftPlatform, Registry.bullets.bulletHitTile);
+			FlxG.overlap(Registry.bullets, rightPlatform, Registry.bullets.bulletHitTile);
+			FlxG.overlap(Registry.bullets, middlePlatform, Registry.bullets.bulletHitTile);
 			
 			//Keep the light on the Player
 			light.x = Registry.player.x + 5;
