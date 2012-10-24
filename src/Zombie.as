@@ -9,7 +9,7 @@ package
 	{
 		[Embed(source = '../assets/zombie.png')] private var zombiePNG:Class;
 		
-		public var speed:int = 50;
+		public var speed:int = 25;
 		public var gravity:int = 400;
 		
 		public function Zombie() 
@@ -20,6 +20,7 @@ package
 		
 		public function drop(bx:int, by:int, direction:int):void
 		{
+			health = 3;
 			x = bx;
 			y = by;
 			velocity.x = direction * speed;

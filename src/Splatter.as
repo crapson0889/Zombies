@@ -21,11 +21,20 @@ package
 			
 			exists = false;
 			
-			for (var i:int = 0; i < 1000; i++)
+			for (var i:int = 0; i < 250; i++)
 			{
 				particle = new FlxParticle();
 				particle.makeGraphic(2, 2, 0xffCC0000);
 				add(particle);
+				if (i % 50 == 0)
+				{
+					particle = new FlxParticle();
+					particle.makeGraphic(3, 3, 0xffFF72E2);
+					add(particle);
+					particle = new FlxParticle();
+					particle.makeGraphic(3, 3, 0xff5B7F00);
+					add(particle);
+				}
 			}
 		}
 		

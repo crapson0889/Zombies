@@ -1,11 +1,14 @@
 package
 {
+	import flash.text.engine.SpaceJustifier;
 	import org.flixel.*;
 	import org.flixel.plugin.photonstorm.*;
 	
 	public class Player extends FlxSprite
 	{
 		[Embed(source = '../assets/player.png')] private var playerPNG:Class;
+		
+		private var fountain:Splatter;
 		
 		public function Player(X:Number, Y:Number)
 		{
@@ -86,6 +89,8 @@ package
 		
 		public function zombieHitPlayer(player:FlxObject, zombie:FlxObject):void
 		{
+			Registry.splatters.playerDeath(x, y);
+			
 			kill();
 		}
 	}

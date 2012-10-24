@@ -19,6 +19,10 @@ package
 		//Darkness overlay and lighting immediately around the Player
 		private var darkness:FlxSprite;
 		private var light:Light;
+		private var flashlight:Light;
+		
+		[Embed(source = "/../assets/light.png")] private var LightImageClass:Class;
+		[Embed(source = "/../assets/flashlight.png")] private var FlashlightImageClass:Class;
 		
 		public function PlayState() 
 		{
@@ -75,13 +79,16 @@ package
 			darkness.blend = "multiply";
 			
 			//Creating and adding the Lighting effect
-			light = new Light(Registry.player.x, Registry.player.y, darkness);
-			
+			light = new Light(Registry.player.x, Registry.player.y, LightImageClass, darkness);
 			add(light);
+			
+			flashlight = new Light(Registry.player.x, Registry.player.y, FlashlightImageClass, darkness);
+			flashlight.turnable = true;
+			add(flashlight);
 			
 			//Adding the Darkness
 			//Important that the Darkness is created before the light, but added after the light... Don't mess with it
-			add(darkness);		//Commenting out this line will remove the darkness
+			//add(darkness);		//Commenting out this line will remove the darkness
 			
 			//Add anything after darkness that you dont want to get darkened
 			debug = new FlxText(0, 0, 200, "");
@@ -112,6 +119,7 @@ package
 			    
 			FlxG.overlap(Registry.zombies, Registry.bullets, Registry.zombies.bulletHitZombie);
 			
+			FlxG.overlap(Registry.player, Registry.zombies, turnOnLights);
 			FlxG.overlap(Registry.player, Registry.zombies, Registry.player.zombieHitPlayer);
 			
 			FlxG.overlap(Registry.player, supply, hitSupply);
@@ -127,14 +135,19 @@ package
 		}
 		
 		override public function draw():void {
-			//darkness.fill(0xff000000);
-			darkness.fill(0xff222222);
+			darkness.fill(0xff000000);
+			//darkness.fill(0xff222222);
 			super.draw();
 		}
 		
 		private function hitSupply(player:FlxObject, supply:FlxObject):void 
 		{
 			supply.kill();
+		}
+		
+		private function turnOnLights(player:FlxObject, zombie:FlxObject):void 
+		{
+			darkness.kill();
 		}
 	}
 

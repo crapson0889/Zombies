@@ -3,6 +3,7 @@ package
 	/*
 	 * Packages the most commonly used items in the game for global access
 	 * */
+	import flash.media.Sound;
 	import org.flixel.*;
 	
 	public class Registry

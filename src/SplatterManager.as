@@ -20,6 +20,23 @@ package
 			}
 		}
 		
+		public function spurt(x:Number, y:Number, direction:int):void 
+		{
+			var splatter:Splatter = members[splatterCount];
+			
+			splatter.setDirection(direction);
+			splatter.x = x;
+			splatter.y = y;
+			splatter.setSize(3, 3);
+			splatter.start(true, 3, 0.01);
+			
+			splatterCount++;
+			if (splatterCount == Registry.zombieCount)
+			{
+				splatterCount = 0;
+			}
+		}
+		
 		public function explode(x:Number, y:Number, direction:int):void
 		{	
 			var splatter:Splatter = members[splatterCount];
@@ -27,7 +44,26 @@ package
 			splatter.setDirection(direction);
 			splatter.x = x;
 			splatter.y = y;
+			splatter.setSize(16, 16);
 			splatter.start(true, 3, 0.01);
+			
+			splatterCount++;
+			if (splatterCount == Registry.zombieCount)
+			{
+				splatterCount = 0;
+			}
+		}
+		
+		public function playerDeath(x:Number, y:Number):void 
+		{
+			var splatter:Splatter = members[splatterCount];
+			
+			splatter.setXSpeed(-100, 100);
+			splatter.setYSpeed(-100, -150);
+			splatter.x = x;
+			splatter.y = y;
+			splatter.setSize(8, 8);
+			splatter.start(false, 0, 0.01);
 			
 			splatterCount++;
 			if (splatterCount == Registry.zombieCount)

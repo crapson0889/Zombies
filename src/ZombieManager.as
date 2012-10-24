@@ -35,9 +35,15 @@ package
 		public function bulletHitZombie(zombie:Zombie, bullet:Bullet):void 
 		{
 			bullet.exists = false;
-			zombie.exists = false;
+
+			zombie.health--;
+			Registry.splatters.spurt(bullet.x, bullet.y, bullet.direction);
 			
-			Registry.splatters.explode(zombie.x, zombie.y, bullet.direction);
+			if (zombie.health == 0)
+			{
+				Registry.splatters.explode(zombie.x, zombie.y, bullet.direction);
+				zombie.exists = false;
+			}
 		}
 	}
 }
