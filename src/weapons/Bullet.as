@@ -1,4 +1,4 @@
-package  
+package  weapons
 {
 	/*
 	 *	Handles basic functions of a single bullet
@@ -7,7 +7,7 @@ package
 
 	public class Bullet extends FlxSprite
 	{
-		[Embed(source = '../assets/bullet.png')] private var bulletPNG:Class;
+		[Embed(source = '../../assets/bullet.png')] private var bulletPNG:Class;
 		
 		public var damage:int = 1;
 		public var speed:int = 300;

@@ -2,10 +2,9 @@ package
 {
 	import org.flixel.*;
 	
-	/**
-	 * ...
-	 * @author Chris Rapson
-	 */
+	/*
+	 * This file just sets the screen size and starts the game... nothing to see here
+	 * */
 	[SWF(width="680", height="512", backgroundColor="#000000")]
 
 	public class Main extends FlxGame

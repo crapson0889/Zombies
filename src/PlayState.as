@@ -1,79 +1,82 @@
 package
 {
+	/*
+	 * The meat and potatoes of the game
+	 * 
+	 * Just because this is where all of the initializaitons are for the game, most of the logic
+	 * should be kept with the item itself. This will keep this file manageable and will allow
+	 * coders to understand what an object does without having to jump between sources.
+	 * */
 	import org.flixel.*;
+	import player.*;
+	import weapons.*;
+	import fx.*;
+	import zombies.*;
+	import levels.*;
 	
 	public class PlayState extends FlxState
 	{	
-		private var supply:Supply;
-		
+		//Simple text overlay... Will be replaced by a traditional GUI overlay later on
 		private var debug:FlxText;
 		
-		//Programatically added platforms - these will be removed when map is created
-		private var floor:FlxTileblock;
-		private var leftPlatform: FlxTileblock;
-		private var rightPlatform: FlxTileblock;
-		private var middlePlatform: FlxTileblock;
-		
+		//A timer to output a zombie into the map every few seconds
 		private var zombieTimer: FlxTimer;
 		
 		//Darkness overlay and lighting immediately around the Player
-		private var darkness:FlxSprite;
-		private var light:Light;
-		private var flashlight:Light;
-		
-		[Embed(source = "/../assets/light.png")] private var LightImageClass:Class;
-		[Embed(source = "/../assets/flashlight.png")] private var FlashlightImageClass:Class;
+		private var darkness:Darkness;
+		private var light:PlayerLight;
+		private var flashlight:Flashlight;
 		
 		public function PlayState() 
 		{
+			super();
 		}
 		
+		//This function is ran at the beginning of the game to create the assets of the game
 		override public function create():void
 		{
-			Registry.bullets = new BulletManager;
-			Registry.zombies = new ZombieManager;
-			Registry.splatters = new SplatterManager;
+			super.create();
+			
+			//Holds the layers of the level of the game
 			Registry.level1 = new Level1;
-			
-			//Setting the Background Color
-			FlxG.bgColor = 0xff444444;
-			
-			//Creating the Player and adding
-			Registry.player = new Player(32, 170);
-			
-			//Add the Registry classes
 			add(Registry.level1);
+			
+			//Holds all the bullets of the game
+			Registry.bullets = new BulletManager;
 			add(Registry.bullets);
-			add(Registry.player);
+			
+			//Holds all the zombies of the game
+			Registry.zombies = new ZombieManager;
 			add(Registry.zombies);
+			
+			//Holds all the blood emitters of the game
+			Registry.splatters = new SplatterManager;
 			add(Registry.splatters);
+			
+			//The user controlled player of the game
+			Registry.player = new Player;
+			add(Registry.player);
 			
 			//Spits out the zombies
 			zombieTimer = new FlxTimer();
 			zombieTimer.start(2, 0, Registry.zombies.drop);
 			
-			// Not used yet
-			//supply = new Supply();
-			//add(supply);
-			
 			//Creating the Darkness overlay
-			darkness = new FlxSprite(0,0);
-			darkness.makeGraphic(FlxG.width, FlxG.height, 0xff000000);
-			darkness.scrollFactor.x = darkness.scrollFactor.y = 0;
-			darkness.blend = "multiply";
+			darkness = new Darkness();
 			
-			//Creating and adding the Lighting effect
-			light = new Light(Registry.player.x, Registry.player.y, LightImageClass, darkness);
+			//The light immediately around the player
+			light = new PlayerLight(Registry.player.x, Registry.player.y, darkness);
 			add(light);
 			
-			flashlight = new Light(Registry.player.x, Registry.player.y, FlashlightImageClass, darkness);
-			flashlight.turnable = true;
+			//The flashlight emitting from the player
+			flashlight = new Flashlight(Registry.player.x, Registry.player.y, darkness);
 			add(flashlight);
 			
-			//Adding the Darkness
-			//Important that the Darkness is created before the light, but added after the light... Don't mess with it
-			//add(darkness);		//Commenting out this line will remove the darkness
+			//----*IMPORTANT*----
+			//The darkness is created before the light, but added after the light... Don't mess with it
+			add(darkness);		//Commenting out this line will remove the darkness
 			
+			//----*IMPORTANT*----
 			//Add anything after darkness that you dont want to get darkened
 			debug = new FlxText(0, 0, 200, "");
 			add(debug);
@@ -85,42 +88,30 @@ package
 			
 			debug.text = "Splatter Pool: " + Registry.splatters.countLiving() + "/" + Registry.zombies.maxSize;
 			
+			//Collisions with the map
 			FlxG.collide(Registry.player, Registry.level1.midground);
-
 			FlxG.collide(Registry.zombies, Registry.level1.midground);
-
 			FlxG.collide(Registry.splatters, Registry.level1.midground);
-			    
+			
+			//If bullet hits zombie call funciton
 			FlxG.overlap(Registry.zombies, Registry.bullets, Registry.zombies.bulletHitZombie);
 			
-			FlxG.overlap(Registry.player, Registry.zombies, turnOnLights);
-			FlxG.overlap(Registry.player, Registry.zombies, Registry.player.zombieHitPlayer);
-			
-			FlxG.overlap(Registry.player, supply, hitSupply);
-			
-			//FlxG.overlap(Registry.bullets, Registry.level1.midground, Registry.bullets.bulletHitTile);
-			//FlxG.collide(Registry.bullets, Registry.level1.midground);
-			
-			//Keep the light on the Player
-			light.x = Registry.player.x + 5;
-			light.y = Registry.player.y + 5;
+			//If zombie hits player its game over
+			FlxG.overlap(Registry.player, Registry.zombies, gameOver);
 		}
 		
+		//Override the draw function to fill the screen with the darkness
 		override public function draw():void {
 			darkness.fill(0xff000000);
-			//darkness.fill(0xff222222);
 			super.draw();
 		}
 		
-		private function hitSupply(player:FlxObject, supply:FlxObject):void 
-		{
-			supply.kill();
-		}
-		
-		private function turnOnLights(player:FlxObject, zombie:FlxObject):void 
+		//The current ending to the game. 
+		private function gameOver(player:FlxObject, zombie:FlxObject):void 
 		{
 			darkness.kill();
+			Registry.splatters.playerDeath(Registry.player.x, Registry.player.y);
+			Registry.player.kill();
 		}
 	}
-
 }

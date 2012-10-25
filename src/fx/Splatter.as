@@ -1,4 +1,4 @@
-package  
+package fx
 {
 	/*
 	 * 	A single splatter of blood from a zombie
@@ -9,7 +9,7 @@ package
 	{
 		private var particle:FlxParticle;
 		
-		public function Splatter(bx:Number = 170, by:Number = 128, s:Number = 100)
+		public function Splatter(bx:Number = 170, by:Number = 128, s:Number = 56)
 		{
 			super(bx, by, s);
 			
@@ -21,12 +21,12 @@ package
 			
 			exists = false;
 			
-			for (var i:int = 0; i < 250; i++)
+			for (var i:int = 0; i < 50; i++)
 			{
 				particle = new FlxParticle();
 				particle.makeGraphic(2, 2, 0xffCC0000);
 				add(particle);
-				if (i % 50 == 0)
+				if (i % 15 == 0)
 				{
 					particle = new FlxParticle();
 					particle.makeGraphic(3, 3, 0xffFF72E2);

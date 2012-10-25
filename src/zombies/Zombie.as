@@ -1,4 +1,4 @@
-package  
+package zombies
 {
 	/*
 	 * The basic enemy of the game
@@ -7,7 +7,7 @@ package
 	
 	public class Zombie extends FlxSprite
 	{
-		[Embed(source = '../assets/zombie.png')] private var zombiePNG:Class;
+		[Embed(source = '../../assets/zombie.png')] private var zombiePNG:Class;
 		
 		public var speed:int = 25;
 		public var gravity:int = 400;

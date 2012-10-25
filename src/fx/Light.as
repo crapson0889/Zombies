@@ -1,15 +1,18 @@
-package 
+package fx
 {
 	/*
 	 *	The lit up area immediately surrounding the player.
+	 * 
+	 * The basic class for an image that is blended into the darkness
+	 * leaving a hole in the darkness for the user to see through.
 	 * */
+	
 	import flash.display.Graphics;
 	import org.flixel.*;
 
 	public class Light extends FlxSprite {
 
 		private var darkness:FlxSprite;
-		public var turnable:Boolean = false;
     
 		public function Light(x:Number, y:Number, imageClass:Class, darkness:FlxSprite):void {
 			super(x, y, imageClass);
@@ -28,27 +31,5 @@ package
 					screenXY.y - this.height / 2);
 		}
 		
-		override public function update():void {
-			super.update();
-			
-			if (turnable == true)
-			{
-				if (Registry.player.facing == FlxObject.RIGHT)
-				{
-					facing = FlxObject.RIGHT;
-					angle = 0;
-					x = Registry.player.x + 64;
-					y = Registry.player.y +12;
-				}
-				else {
-					facing = FlxObject.LEFT;
-					angle = 180;
-					x = Registry.player.x - 52;
-					y = Registry.player.y +8;
-				}
-			}
-			
-			facing = Registry.player.facing;
-		}
 	}
 }

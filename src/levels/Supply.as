@@ -1,4 +1,4 @@
-package  
+package levels
 {
 	/*
 	 * 	A single supply box instance
@@ -7,7 +7,7 @@ package
 	
 	public class Supply extends FlxSprite
 	{
-		[Embed(source = '../assets/supply.png')] private var supplyPNG:Class;
+		[Embed(source = '../../assets/supply.png')] private var supplyPNG:Class;
 		
 		public function Supply() 
 		{

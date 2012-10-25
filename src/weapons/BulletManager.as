@@ -1,4 +1,4 @@
-package  
+package  weapons
 {
 	/*
 	 *	Handles all of the bullets in the game

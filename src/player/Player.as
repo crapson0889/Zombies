@@ -1,4 +1,4 @@
-package
+package player
 {
 	import flash.text.engine.SpaceJustifier;
 	import org.flixel.*;
@@ -6,14 +6,12 @@ package
 	
 	public class Player extends FlxSprite
 	{
-		[Embed(source = '../assets/player.png')] private var playerPNG:Class;
+		[Embed(source = '../../assets/player.png')] private var playerPNG:Class;
 		
-		private var fountain:Splatter;
-		
-		public function Player(X:Number, Y:Number)
+		public function Player()
 		{
 			//	As this extends FlxSprite we need to call super() to ensure all of the parent variables we need are created
-			super(X, Y);
+			super(32, 170);
 			
 			//	Load the player.png into this sprite.
 			//	The 2nd parameter tells Flixel it's a sprite sheet and it should chop it up into 16x18 sized frames.
@@ -85,13 +83,6 @@ package
 			{
 				play("jump");
 			}
-		}
-		
-		public function zombieHitPlayer(player:FlxObject, zombie:FlxObject):void
-		{
-			Registry.splatters.playerDeath(x, y);
-			
-			kill();
 		}
 	}
 }

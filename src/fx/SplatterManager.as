@@ -1,4 +1,4 @@
-package  
+package fx
 {
 	/*
 	 * Handles multiple splatters in the game, because there is more than one zombie to kill
@@ -56,20 +56,31 @@ package
 		
 		public function playerDeath(x:Number, y:Number):void 
 		{
-			var splatter:Splatter = members[splatterCount];
+			//Custom player emitter for when the player dies...
 			
-			splatter.setXSpeed(-100, 100);
-			splatter.setYSpeed(-100, -150);
-			splatter.x = x;
-			splatter.y = y;
-			splatter.setSize(8, 8);
-			splatter.start(false, 0, 0.01);
+			var splatter:FlxEmitter = new FlxEmitter(x, y, 500);
 			
-			splatterCount++;
-			if (splatterCount == Registry.zombieCount)
+			splatter.setXSpeed(-200, 200);
+			splatter.setYSpeed(-10, -250);
+			splatter.setSize(16, 16);
+			splatter.maxRotation = 0;
+			splatter.gravity = 400;
+			splatter.bounce = 0.2;
+			var particle:FlxParticle;
+			for (var i:int = 0; i < 500; i++)
 			{
-				splatterCount = 0;
+				particle = new FlxParticle();
+				particle.makeGraphic(2, 2, 0xffCC0000);
+				splatter.add(particle);
+				if (i % 50 == 0)
+				{
+					particle = new FlxParticle();
+					particle.makeGraphic(6, 6, 0xffA60000);
+					splatter.add(particle);
+				}
 			}
+			add(splatter);
+			splatter.start(true, 0, 0.01);
 		}
 	}
 }

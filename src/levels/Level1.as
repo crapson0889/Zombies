@@ -1,13 +1,13 @@
-package  
+package levels
 {
 	import org.flixel.*;
 	
 	public class Level1 extends FlxGroup
 	{
-		[Embed(source = "../maps/mapCSV_Group1_Background.csv", mimeType = "application/octet-stream")] public var backgroundCSV:Class;
-		[Embed(source = "../maps/mapCSV_Group1_Midground.csv", mimeType = "application/octet-stream")] public var midgroundCSV:Class;
-		[Embed(source = "../maps/mapCSV_Group1_Foreground.csv", mimeType = "application/octet-stream")] public var foregroundCSV:Class;
-		[Embed(source = "../maps/terrain.png")] public var tileset:Class;
+		[Embed(source = "dungeon/mapCSV_Group1_Background.csv", mimeType = "application/octet-stream")] public var backgroundCSV:Class;
+		[Embed(source = "dungeon/mapCSV_Group1_Midground.csv", mimeType = "application/octet-stream")] public var midgroundCSV:Class;
+		[Embed(source = "dungeon/mapCSV_Group1_Foreground.csv", mimeType = "application/octet-stream")] public var foregroundCSV:Class;
+		[Embed(source = "dungeon/terrain.png")] public var tileset:Class;
 		
 		public var background:FlxTilemap;
 		public var midground:FlxTilemap;
