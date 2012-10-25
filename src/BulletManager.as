@@ -27,7 +27,7 @@ package
 			}
 		}
 
-		public function bulletHitTile(bullet:Bullet, tile:FlxTileblock):void 
+		public function bulletHitTile(bullet:Bullet, tile:FlxTilemap):void 
 		{
 			bullet.exists = false;
 			bullet.kill();

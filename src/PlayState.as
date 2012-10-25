@@ -33,6 +33,7 @@ package
 			Registry.bullets = new BulletManager;
 			Registry.zombies = new ZombieManager;
 			Registry.splatters = new SplatterManager;
+			Registry.level1 = new Level1;
 			
 			//Setting the Background Color
 			FlxG.bgColor = 0xff444444;
@@ -41,8 +42,9 @@ package
 			Registry.player = new Player(32, 170);
 			
 			//Add the Registry classes
-			add(Registry.player);
+			add(Registry.level1);
 			add(Registry.bullets);
+			add(Registry.player);
 			add(Registry.zombies);
 			add(Registry.splatters);
 			
@@ -53,24 +55,6 @@ package
 			// Not used yet
 			//supply = new Supply();
 			//add(supply);
-			
-			//Creating platforms and adding them
-			floor = new FlxTileblock(0, 240, 320, 16);
-			floor.makeGraphic(340, 16, 0xffA63E00);
-			
-			leftPlatform = new FlxTileblock(0, 192, 96, 16);
-			leftPlatform.makeGraphic(96, 16, 0xffA63E00);
-			
-			rightPlatform = new FlxTileblock(248, 192, 96, 16);
-			rightPlatform.makeGraphic(96, 16, 0xffA63E00);
-			
-			middlePlatform = new FlxTileblock(96, 144, 152, 16);
-			middlePlatform.makeGraphic(152, 16, 0xffA63E00);
-			
-			add(floor);
-			add(leftPlatform);
-			add(rightPlatform);
-			add(middlePlatform);
 			
 			//Creating the Darkness overlay
 			darkness = new FlxSprite(0,0);
@@ -101,21 +85,11 @@ package
 			
 			debug.text = "Splatter Pool: " + Registry.splatters.countLiving() + "/" + Registry.zombies.maxSize;
 			
-			//If user collides with platform... collide
-			FlxG.collide(Registry.player, floor);
-			FlxG.collide(Registry.player, leftPlatform);
-			FlxG.collide(Registry.player, rightPlatform);
-			FlxG.collide(Registry.player, middlePlatform);
-			
-			FlxG.collide(Registry.zombies, floor);
-			FlxG.collide(Registry.zombies, leftPlatform);
-			FlxG.collide(Registry.zombies, rightPlatform);
-			FlxG.collide(Registry.zombies, middlePlatform);
-			
-			FlxG.collide(Registry.splatters, floor);
-			FlxG.collide(Registry.splatters, leftPlatform);
-			FlxG.collide(Registry.splatters, rightPlatform);
-			FlxG.collide(Registry.splatters, middlePlatform);
+			FlxG.collide(Registry.player, Registry.level1.midground);
+
+			FlxG.collide(Registry.zombies, Registry.level1.midground);
+
+			FlxG.collide(Registry.splatters, Registry.level1.midground);
 			    
 			FlxG.overlap(Registry.zombies, Registry.bullets, Registry.zombies.bulletHitZombie);
 			
@@ -124,10 +98,8 @@ package
 			
 			FlxG.overlap(Registry.player, supply, hitSupply);
 			
-			FlxG.overlap(Registry.bullets, floor, Registry.bullets.bulletHitTile);
-			FlxG.overlap(Registry.bullets, leftPlatform, Registry.bullets.bulletHitTile);
-			FlxG.overlap(Registry.bullets, rightPlatform, Registry.bullets.bulletHitTile);
-			FlxG.overlap(Registry.bullets, middlePlatform, Registry.bullets.bulletHitTile);
+			//FlxG.overlap(Registry.bullets, Registry.level1.midground, Registry.bullets.bulletHitTile);
+			//FlxG.collide(Registry.bullets, Registry.level1.midground);
 			
 			//Keep the light on the Player
 			light.x = Registry.player.x + 5;

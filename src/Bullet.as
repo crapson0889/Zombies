@@ -24,17 +24,14 @@ package
 		public function fire(bx:int, by:int):void
 		{
 			x = bx;
-			y = by;
-			offset.y = -6;
+			y = by + 6;
 			if (Registry.player.facing == 1)
 			{
-				offset.x = 2;
 				velocity.x = -speed;
 				direction = -1;
 			}
 			else
 			{
-				offset.x = -12;
 				velocity.x = speed;
 				direction = 1;
 			}
@@ -44,6 +41,12 @@ package
 		override public function update():void
 		{
 			super.update();
+			
+			if (overlaps(Registry.level1.midground))
+			{
+				exists = false;
+				kill();
+			}
 			
 			//	Bullet off the top of the screen?
 			if (exists)

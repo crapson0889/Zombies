@@ -12,6 +12,7 @@ package
 		public static var bullets:BulletManager;
 		public static var zombies:ZombieManager;
 		public static var splatters:SplatterManager;
+		public static var level1:Level1;
 		
 		public static const zombieCount:Number = 10;
 		

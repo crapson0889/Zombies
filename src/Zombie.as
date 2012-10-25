@@ -11,6 +11,7 @@ package
 		
 		public var speed:int = 25;
 		public var gravity:int = 400;
+		private var lastDirection:int = 0;
 		
 		public function Zombie() 
 		{
@@ -25,6 +26,7 @@ package
 			y = by;
 			velocity.x = direction * speed;
 			velocity.y = gravity;
+			lastDirection = direction;
 			exists = true;
 		}
 		
@@ -34,9 +36,10 @@ package
 			
 			velocity.y = gravity;
 			
-			if (x < 0 || x > FlxG.width)
+			if (velocity.x == 0)
 			{
-				velocity.x = -1 * (velocity.x);
+				lastDirection = lastDirection * -1;
+				velocity.x = speed * lastDirection;
 			}
 			if (y > FlxG.height)
 			{
