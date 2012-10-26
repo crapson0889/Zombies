@@ -6,7 +6,7 @@ package player
 	
 	public class Player extends FlxSprite
 	{
-		[Embed(source = '../../assets/player.png')] private var playerPNG:Class;
+		[Embed(source = '../../assets/rick.png')] private var playerPNG:Class;
 		
 		public function Player()
 		{
@@ -15,20 +15,20 @@ package player
 			
 			//	Load the player.png into this sprite.
 			//	The 2nd parameter tells Flixel it's a sprite sheet and it should chop it up into 16x18 sized frames.
-			loadGraphic(playerPNG, true, true, 16, 18, true);
+			loadGraphic(playerPNG, true, true, 18, 21, true);
 			
 			//	The sprite is 16x18 in size, but that includes a little feather of hair on its head which we don't want to include in collision checks.
 			//	We also shave 2 pixels off each side to make it slip through gaps easier. Changing the width/height does NOT change the visual sprite, just the bounding box used for physics.
-			width = 12;
-			height = 16;
+			width = 14;
+			height = 20;
 			
 			//	Because we've shaved a few pixels off, we need to offset the sprite to compensate
 			offset.x = 2;
 			offset.y = 2;
 			
 			//	The Animation sequences we need
-			addAnimation("idle", [0], 0, false);
-			addAnimation("walk", [0, 1, 0, 2], 10, true);
+			addAnimation("idle", [7], 0, false);
+			addAnimation("walk", [0, 1, 2, 3, 4, 5], 10, true);
 			addAnimation("jump", [1], 0, false);
 			addAnimation("hurt", [4], 0, false);
 			
@@ -50,7 +50,7 @@ package player
 			FlxControl.player1.setFireButton("CONTROL", FlxControlHandler.KEYMODE_JUST_DOWN, 0, Registry.bullets.fire);
 			
 			//	Stop the player running off the edge of the screen and falling into nothing
-			FlxControl.player1.setBounds(16, 0, 288, 240);
+			//FlxControl.player1.setBounds(16, 0, 288, 240);
 			
 			//	Because we are using the MOVEMENT_ACCELERATES type the first value is the acceleration speed of the sprite
 			//	Think of it as the time it takes to reach maximum velocity. A value of 100 means it would take 1 second. A value of 400 means it would take 0.25 of a second.

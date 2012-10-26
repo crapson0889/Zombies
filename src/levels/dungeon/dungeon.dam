@@ -2,71 +2,80 @@
 <project>
   <version>3.0.4</version>
   <bgColor>0x000000</bgColor>
-  <viewPos x="16" y="26"/>
+  <viewPos x="244" y="229"/>
   <firstLayersTop>false</firstLayersTop>
   <spriteEntries currentId="1"/>
   <layers>
     <group name="Group1" id="0" xScroll="1" yScroll="1" visible="true" open="true" locked="false" exports="true">
-      <maplayer name="Background" id="0" xScroll="1" yScroll="1" x="0" y="0" width="21" height="16" tileset="../../../../../Downloads/MiniDoku/MiniDoku - 1.3.1 - Edit 3.0.1/terrain.png" tileWidth="16" tileHeight="16" visible="false" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="16" tileSpacingY="16" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
-        <row>100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100</row>
-        <row>100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,101,100,100,100,100,100</row>
-        <row>100,101,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100</row>
-        <row>100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100</row>
-        <row>100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100</row>
-        <row>100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100</row>
-        <row>100,100,100,100,100,100,100,101,100,100,100,100,100,100,100,100,100,100,100,100,100</row>
-        <row>100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100</row>
-        <row>100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100</row>
-        <row>100,100,100,100,100,100,100,100,100,100,100,100,100,100,101,100,100,100,100,100,100</row>
-        <row>101,100,100,100,100,100,100,100,101,100,100,100,100,100,100,100,100,100,100,100,101</row>
-        <row>100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100</row>
-        <row>100,100,100,101,100,100,100,100,100,100,100,100,100,100,100,100,100,100,101,100,100</row>
-        <row>100,100,100,100,100,100,100,100,100,100,100,100,100,100,101,100,100,100,100,100,100</row>
-        <row>100,100,100,100,100,100,100,100,100,101,100,100,100,100,100,100,100,100,100,100,100</row>
-        <row>100,100,100,100,100,100,100,100,100,61,61,61,100,100,100,100,100,100,100,100,100</row>
+      <maplayer name="Background" id="0" xScroll="1" yScroll="1" x="0" y="0" width="25" height="19" tileset="../../../../../Downloads/MiniDoku/MiniDoku - 1.3.1 - Edit 3.0.1/terrain.png" tileWidth="16" tileHeight="16" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="16" tileSpacingY="16" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+        <row>100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,0,0,0,0</row>
+        <row>100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,101,100,100,100,100,100,100,100,101,0</row>
+        <row>100,101,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,0</row>
+        <row>100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,0</row>
+        <row>100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,0</row>
+        <row>100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,101,100,100,0</row>
+        <row>100,100,100,100,100,100,100,101,100,100,100,100,100,100,100,100,100,101,100,100,100,100,100,100,0</row>
+        <row>100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,0</row>
+        <row>100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,0</row>
+        <row>100,100,100,100,100,100,100,100,100,100,100,100,100,100,101,100,100,100,100,100,100,100,100,100,0</row>
+        <row>101,100,100,100,100,100,100,100,101,100,100,100,100,100,100,100,100,100,100,100,101,100,100,100,0</row>
+        <row>100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,0</row>
+        <row>100,100,100,101,100,100,100,100,100,100,100,100,100,100,100,100,100,100,101,100,100,100,100,100,0</row>
+        <row>100,100,100,100,100,100,100,100,100,100,100,100,100,100,101,100,100,100,100,100,100,100,100,100,0</row>
+        <row>100,100,100,100,100,100,100,100,100,101,100,100,100,100,100,100,100,100,100,100,100,100,100,100,0</row>
+        <row>100,100,100,101,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,100,0</row>
+        <row>0,100,100,100,100,101,100,100,100,100,100,100,100,100,100,100,100,100,101,100,100,100,100,100,0</row>
+        <row>0,100,100,100,100,100,100,100,100,101,100,100,100,100,100,100,100,100,100,100,100,100,100,100,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,61,61,61,0,0,0,0,0,0,0,0,0,0,0</row>
         <tileProperties>
           <properties/>
         </tileProperties>
       </maplayer>
-      <maplayer name="Midground" id="1" xScroll="1" yScroll="1" x="0" y="0" width="21" height="16" tileset="../../../../../Downloads/MiniDoku/MiniDoku - 1.3.1 - Edit 3.0.1/terrain.png" tileWidth="16" tileHeight="16" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="16" tileSpacingY="16" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false" selected="true">
-        <row>139,139,139,139,0,0,139,139,139,139,180,139,139,139,139,0,0,139,139,139,139</row>
-        <row>139,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,139</row>
-        <row>139,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,139</row>
-        <row>139,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,139</row>
-        <row>139,0,0,4,4,4,4,0,0,4,4,4,0,0,4,4,4,4,0,0,139</row>
-        <row>139,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,139</row>
-        <row>139,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,139</row>
-        <row>139,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,4,4,4,4,139</row>
-        <row>139,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,139</row>
-        <row>139,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,139</row>
-        <row>139,0,0,0,0,4,4,4,4,4,4,4,4,4,4,4,0,0,0,0,139</row>
-        <row>139,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,139</row>
-        <row>139,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,139</row>
-        <row>139,3,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,3,3,3,139</row>
-        <row>139,2,2,2,3,3,3,3,3,0,0,0,3,3,3,3,3,2,2,2,139</row>
-        <row>139,139,139,139,139,139,139,139,139,0,0,0,139,139,139,139,139,139,139,139,139</row>
+      <maplayer name="Midground" id="1" xScroll="1" yScroll="1" x="0" y="0" width="25" height="19" tileset="../../../../../Downloads/MiniDoku/MiniDoku - 1.3.1 - Edit 3.0.1/terrain.png" tileWidth="16" tileHeight="16" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="16" tileSpacingY="16" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false" selected="true">
+        <row>139,139,139,139,139,0,0,139,139,139,139,0,0,0,139,139,139,139,0,0,139,139,139,139,139</row>
+        <row>139,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,139</row>
+        <row>139,0,0,0,4,4,4,4,0,0,4,4,4,4,4,0,0,4,4,4,4,0,0,0,139</row>
+        <row>139,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,139</row>
+        <row>139,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,4,4,139</row>
+        <row>139,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,139</row>
+        <row>139,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,139</row>
+        <row>139,0,0,0,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,0,0,0,139</row>
+        <row>139,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,139</row>
+        <row>139,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,139</row>
+        <row>139,4,4,4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,4,4,4,139</row>
+        <row>139,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,139</row>
+        <row>139,0,0,0,0,0,0,0,0,0,107,107,84,107,107,0,0,0,0,0,0,0,0,0,139</row>
+        <row>139,0,0,0,0,4,4,4,4,4,4,107,107,107,4,4,4,4,4,4,0,0,0,0,139</row>
+        <row>139,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,139</row>
+        <row>139,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,139</row>
+        <row>139,3,3,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,3,3,3,139</row>
+        <row>139,2,2,2,2,3,3,3,3,3,3,0,0,0,3,3,3,3,3,3,2,2,2,2,139</row>
+        <row>139,139,139,139,139,139,139,139,139,139,139,0,0,0,139,139,139,139,139,139,139,139,139,139,139</row>
       </maplayer>
-      <maplayer name="Foreground" id="2" xScroll="1" yScroll="1" x="0" y="0" width="21" height="16" tileset="../../../../../Downloads/MiniDoku/MiniDoku - 1.3.1 - Edit 3.0.1/terrain.png" tileWidth="16" tileHeight="16" visible="false" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="16" tileSpacingY="16" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,80,0,0,0,0,0,0,0,0,0,0,0,80,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,10,10,10,10,0,0,10,10,10,0,0,10,10,10,10,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,10,10,10,10,0,0,0,0,0,0,0,0,0,0,0,10,10,10,10,0</row>
-        <row>0,0,0,0,0,0,0,80,0,0,0,0,0,80,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,10,10,10,10,10,10,10,10,10,10,10,0,0,0,0,0</row>
-        <row>0,0,0,80,0,0,0,0,0,0,0,0,0,0,0,0,0,80,0,0,0</row>
-        <row>0,0,28,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,12,0</row>
-        <row>0,0,0,0,0,12,0,0,0,0,0,0,0,0,0,29,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
-        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+      <maplayer name="Foreground" id="2" xScroll="1" yScroll="1" x="0" y="0" width="25" height="19" tileset="../../../../../Downloads/MiniDoku/MiniDoku - 1.3.1 - Edit 3.0.1/terrain.png" tileWidth="16" tileHeight="16" visible="true" hasHits="false" drawIdx="1" collideIdx="1" eraseIdx="0" locked="false" exports="true" tileSpacingX="16" tileSpacingY="16" xStagger="0" tileOffsetX="0" tileOffsetY="0" isMaster="false" mapType="2d" hasHeight="false" repeatX="false" repeatY="false">
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,80,0,0,0,0,0,80,0,0,0,0,0,80,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,80,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,80,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,80,0,0,0,0,0,0,0,0,0,80,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,80,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,80,0,0</row>
+        <row>0,28,0,13,0,0,0,80,0,0,0,0,0,0,0,0,0,80,0,0,0,0,0,12,0</row>
+        <row>0,0,0,0,0,0,12,0,0,0,0,0,0,0,0,29,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
+        <row>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</row>
       </maplayer>
     </group>
   </layers>
-  <tileMatrix currentMatrix="0" rows="3" cols="3" randomizeMiddle="true" ignoreClear="false" ignoreMapEdges="true" allowSpecialTiles="false" tileset="../../../../../Desktop">
+  <tileMatrix currentMatrix="0" rows="3" cols="3" randomizeMiddle="true" ignoreClear="false" ignoreMapEdges="true" allowSpecialTiles="false" tileset="../../../../../Downloads/MiniDoku/MiniDoku - 1.3.1 - Edit 3.0.1/terrain.png">
     <row>
       <tile>0</tile>
       <tile>0</tile>
@@ -83,78 +92,12 @@
       <tile>0</tile>
     </row>
     <specialConnections>
-      <sets>
-        <connections name="Single Inside Corners">
-          <entry green="0x1111111" red="0x10000000"/>
-          <entry green="0x11011111" red="0x100000"/>
-          <entry green="0x11111110" red="0x1"/>
-          <entry green="0x11111011" red="0x100"/>
-        </connections>
-        <connections name="Double Inside Corners">
-          <entry green="0x1011111" red="0x10100000"/>
-          <entry green="0x11011110" red="0x100001"/>
-          <entry green="0x11111010" red="0x101"/>
-          <entry green="0x1111011" red="0x10000100"/>
-        </connections>
-        <connections name="Triple Inside Corners">
-          <entry green="0x1011011" red="0x10100100"/>
-          <entry green="0x1011110" red="0x10100001"/>
-          <entry green="0x11011010" red="0x100101"/>
-          <entry green="0x1111010" red="0x10000101"/>
-        </connections>
-        <connections name="Quad Inside Corners">
-          <entry green="0x1011010" red="0x10100101"/>
-          <entry green="0x0" red="0x0"/>
-          <entry green="0x0" red="0x0"/>
-          <entry green="0x0" red="0x0"/>
-        </connections>
-        <connections name="Double Outside Corners">
-          <entry green="0x10" red="0x1011000"/>
-          <entry green="0x1000" red="0x1010010"/>
-          <entry green="0x1000000" red="0x11010"/>
-          <entry green="0x10000" red="0x1001010"/>
-        </connections>
-        <connections name="Double Outside Edges">
-          <entry green="0x1000010" red="0x11000"/>
-          <entry green="0x11000" red="0x1000010"/>
-          <entry green="0x0" red="0x0"/>
-          <entry green="0x0" red="0x0"/>
-        </connections>
-        <connections name="Opposing Double Inside Corners">
-          <entry green="0x1111110" red="0x10000001"/>
-          <entry green="0x11011011" red="0x100100"/>
-          <entry green="0x0" red="0x0"/>
-          <entry green="0x0" red="0x0"/>
-        </connections>
-      </sets>
-      <rows>
-        <row set="0">
-          <tiles>
-            <id>0</id>
-            <id>0</id>
-            <id>0</id>
-            <id>0</id>
-          </tiles>
-        </row>
-        <row set="0">
-          <tiles>
-            <id>0</id>
-            <id>0</id>
-            <id>0</id>
-            <id>0</id>
-          </tiles>
-        </row>
-      </rows>
+      <sets/>
+      <rows/>
     </specialConnections>
   </tileMatrix>
-  <tileMatrixData name="matrix1" rows="3" cols="3" randomizeMiddle="true" ignoreClear="false" ignoreMapEdges="true" allowSpecialTiles="false" tileset="../../../../../Desktop">
+  <tileMatrixData name="matrix1" rows="3" cols="3" randomizeMiddle="true" ignoreClear="false" ignoreMapEdges="true" allowSpecialTiles="false" tileset="../../../../../Downloads/MiniDoku/MiniDoku - 1.3.1 - Edit 3.0.1/terrain.png">
     <tiles>0,0,0,0,0,0,0,0,0</tiles>
-    <connections set="0">
-      <tiles>0,0,0,0</tiles>
-    </connections>
-    <connections set="0">
-      <tiles>0,0,0,0</tiles>
-    </connections>
   </tileMatrixData>
   <tileBrushes/>
   <colorSwatches/>
@@ -187,9 +130,9 @@
     <colour>0x33a2f1</colour>
     <colour>0xb2dcee</colour>
   </colourGrid>
-  <exporter name="c:\program files (x86)\dame\lua\Exporters\csvTilemap.lua" spritepos="Top Left" rotatedSpritePos="false" relativePaths="false" useProjectExporterOnly="false">
+  <exporter name="C:\Program Files (x86)\DAME\lua\Exporters\csvTilemap.lua" spritepos="Top Left" rotatedSpritePos="false" relativePaths="false" useProjectExporterOnly="false">
     <setting name="FileExt">csv</setting>
-    <setting name="CSVDir">C:\Users\crapson\Documents\FlashGames\Flixel\Zombies\maps</setting>
+    <setting name="CSVDir">C:\Users\crapson\Documents\FlashGames\Flixel\Zombies\src\levels\dungeon</setting>
   </exporter>
   <customPropertyTypes/>
   <guides>

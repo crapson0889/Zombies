@@ -75,7 +75,7 @@ package fx
 				if (i % 50 == 0)
 				{
 					particle = new FlxParticle();
-					particle.makeGraphic(6, 6, 0xffA60000);
+					particle.makeGraphic(4, 4, 0xffA60000);
 					splatter.add(particle);
 				}
 			}
