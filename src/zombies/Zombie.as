@@ -15,7 +15,9 @@ package zombies
 		
 		public function Zombie() 
 		{
-			super(0, 0, zombiePNG);
+			super(0, 0);
+			loadGraphic(zombiePNG, true, true, 16, 19, true);
+			addAnimation("walk", [0, 1, 2, 3, 4, 5], 10, true);
 			exists = false;
 		}
 		
@@ -45,6 +47,14 @@ package zombies
 			{
 				exists = false;
 			}
+			if (touching == FlxObject.FLOOR)
+			{
+				play("walk");
+			}
+			if (lastDirection < 0)
+				facing = LEFT;
+			else
+				facing = RIGHT;
 		}
 	}
 

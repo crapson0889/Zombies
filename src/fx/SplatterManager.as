@@ -58,7 +58,7 @@ package fx
 		{
 			//Custom player emitter for when the player dies...
 			
-			var splatter:FlxEmitter = new FlxEmitter(x, y, 500);
+			var splatter:FlxEmitter = new FlxEmitter(x, y, 255);
 			
 			splatter.setXSpeed(-200, 200);
 			splatter.setYSpeed(-10, -250);
@@ -67,7 +67,7 @@ package fx
 			splatter.gravity = 400;
 			splatter.bounce = 0.2;
 			var particle:FlxParticle;
-			for (var i:int = 0; i < 500; i++)
+			for (var i:int = 0; i < 250; i++)
 			{
 				particle = new FlxParticle();
 				particle.makeGraphic(2, 2, 0xffCC0000);

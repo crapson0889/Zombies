@@ -29,10 +29,10 @@ package fx
 				if (i % 15 == 0)
 				{
 					particle = new FlxParticle();
-					particle.makeGraphic(3, 3, 0xffFF72E2);
+					particle.makeGraphic(3, 3, 0xff819969);
 					add(particle);
 					particle = new FlxParticle();
-					particle.makeGraphic(3, 3, 0xff5B7F00);
+					particle.makeGraphic(3, 3, 0xffD4D7D8);
 					add(particle);
 				}
 			}

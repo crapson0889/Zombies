@@ -31,7 +31,7 @@ package
 		public static var supplyManager:SupplyManager;
 		public static var score:uint;
 		
-		public static const zombieCount:Number = 10;
+		public static const zombieCount:Number = 1;
 		
 		public function Registry()
 		{
