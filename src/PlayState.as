@@ -57,6 +57,10 @@ package
 			Registry.player = new Player;
 			add(Registry.player);
 			
+			//Supply manager handles adding supplies and checking collisions
+			Registry.supplyManager = new SupplyManager;
+			add(Registry.supplyManager);
+			
 			//Spits out the zombies
 			zombieTimer = new FlxTimer();
 			zombieTimer.start(2, 0, Registry.zombies.drop);
@@ -86,7 +90,7 @@ package
 		{
 			super.update();
 			
-			debug.text = "Splatter Pool: " + Registry.splatters.countLiving() + "/" + Registry.zombies.maxSize;
+			debug.text = "Score: " + Registry.score;
 			
 			//Collisions with the map
 			FlxG.collide(Registry.player, Registry.level1.midground);

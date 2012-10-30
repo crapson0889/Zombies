@@ -29,7 +29,25 @@ package zombies
 			
 			if (getFirstAvailable())
 			{
-				Zombie(getFirstAvailable()).drop(170, 0, currentDirection);
+				var rand:uint = Math.floor(Math.random() * 3);
+				var location:uint = 0;
+				switch (rand) 
+				{
+					case 0:
+					location = 80;
+					break;
+					
+					case 1:
+					location = 200;
+					break;
+					
+					case 2:
+					location = 320;
+					break;
+					
+					default:
+				}
+				Zombie(getFirstAvailable()).drop(location, 0, currentDirection);
 			}
 		}
 		

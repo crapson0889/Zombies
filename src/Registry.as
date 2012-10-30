@@ -18,7 +18,7 @@ package
 	import weapons.BulletManager;
 	import zombies.ZombieManager;
 	import fx.SplatterManager;
-	import levels.Level1;
+	import levels.*;
 	
 	public class Registry
 	{
@@ -27,6 +27,9 @@ package
 		public static var zombies:ZombieManager;
 		public static var splatters:SplatterManager;
 		public static var level1:Level1;
+		public static var supplyLocations:FlxTilemap;
+		public static var supplyManager:SupplyManager;
+		public static var score:uint;
 		
 		public static const zombieCount:Number = 10;
 		

@@ -1,5 +1,6 @@
 package levels
 {
+	import flash.display.Sprite;
 	import org.flixel.*;
 	
 	public class Level1 extends FlxGroup
@@ -12,6 +13,7 @@ package levels
 		public var background:FlxTilemap;
 		public var midground:FlxTilemap;
 		public var foreground:FlxTilemap;
+		//public var supplyLocations:FlxTilemap;
 			
 		public function Level1() 
 		{
