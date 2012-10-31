@@ -1,6 +1,8 @@
 package 
 {
 	import org.flixel.*;
+	import MenuState;
+	
 	
 	/*
 	 * This file just sets the screen size and starts the game... nothing to see here
@@ -11,7 +13,7 @@ package
 	{
 		public function Main()
 		{
-			super(400, 308, PlayState, 2, 60, 60);
+			super(400, 308, MenuState, 2, 60, 60);
 			
 			forceDebugger = true;
 		}

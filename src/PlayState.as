@@ -13,6 +13,7 @@ package
 	import fx.*;
 	import zombies.*;
 	import levels.*;
+	import org.flixel.FlxG;
 	
 	public class PlayState extends FlxState
 	{	
