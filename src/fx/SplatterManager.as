@@ -65,7 +65,7 @@ package fx
 			splatter.setSize(16, 16);
 			splatter.maxRotation = 0;
 			splatter.gravity = 400;
-			splatter.bounce = 0.2;
+			splatter.bounce = 0.1;
 			var particle:FlxParticle;
 			for (var i:int = 0; i < 250; i++)
 			{

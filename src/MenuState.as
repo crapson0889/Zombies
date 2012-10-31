@@ -31,7 +31,7 @@ package
 		}
 		
 		
-	function startGame():void
+		private function startGame():void
         {
             FlxG.switchState(new PlayState());
         }

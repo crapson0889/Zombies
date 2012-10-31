@@ -13,6 +13,7 @@ package
 	 * More info here: http://www.photonstorm.com/archives/1136/flash-game-dev-tip-1-creating-a-cross-game-communications-structure
 	 * */
 
+	import fx.Darkness;
 	import org.flixel.*;
 	import player.Player;
 	import weapons.BulletManager;
@@ -30,11 +31,27 @@ package
 		public static var supplyLocations:FlxTilemap;
 		public static var supplyManager:SupplyManager;
 		public static var score:uint;
+		public static var darkness:Darkness;
 		
-		public static const zombieCount:Number = 1;
+		public static const zombieCount:uint = 10;
+		public static var batteryLife:uint = 10;
 		
 		public function Registry()
 		{
+		}
+		
+		public static function erase():void 
+		{
+			player = null;
+			bullets = null;
+			zombies = null;
+			splatters = null;
+			level1 = null;
+			supplyLocations = null;
+			supplyManager = null;
+			darkness = null;
+			score = 0;
+			batteryLife = 10;
 		}
 	}
 }

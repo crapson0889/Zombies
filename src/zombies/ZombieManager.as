@@ -38,11 +38,11 @@ package zombies
 					break;
 					
 					case 1:
-					location = 200;
+					location = 176;
 					break;
 					
 					case 2:
-					location = 320;
+					location = 288;
 					break;
 					
 					default:

@@ -9,7 +9,7 @@ package fx
 	{
 		private var particle:FlxParticle;
 		
-		public function Splatter(bx:Number = 170, by:Number = 128, s:Number = 56)
+		public function Splatter(bx:Number = 170, by:Number = 128, s:Number = 35)
 		{
 			super(bx, by, s);
 			
@@ -21,12 +21,12 @@ package fx
 			
 			exists = false;
 			
-			for (var i:int = 0; i < 50; i++)
+			for (var i:int = 0; i < 25; i++)
 			{
 				particle = new FlxParticle();
 				particle.makeGraphic(2, 2, 0xffCC0000);
 				add(particle);
-				if (i % 15 == 0)
+				if (i % 5 == 0)
 				{
 					particle = new FlxParticle();
 					particle.makeGraphic(3, 3, 0xff819969);

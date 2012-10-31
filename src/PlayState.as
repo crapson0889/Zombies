@@ -7,26 +7,30 @@ package
 	 * should be kept with the item itself. This will keep this file manageable and will allow
 	 * coders to understand what an object does without having to jump between sources.
 	 * */
+	import flash.display.LineScaleMode;
 	import org.flixel.*;
 	import player.*;
 	import weapons.*;
 	import fx.*;
 	import zombies.*;
 	import levels.*;
-	import org.flixel.FlxG;
 	
 	public class PlayState extends FlxState
 	{	
 		//Simple text overlay... Will be replaced by a traditional GUI overlay later on
 		private var debug:FlxText;
+		private var battery:FlxText;
 		
 		//A timer to output a zombie into the map every few seconds
 		private var zombieTimer: FlxTimer;
+		private var batteryTimer: FlxTimer;
 		
-		//Darkness overlay and lighting immediately around the Player
-		private var darkness:Darkness;
-		private var light:PlayerLight;
+		//Various lighting effects
+		private var playerLight:PlayerLight;
 		private var flashlight:Flashlight;
+		
+		//Used to lighten the darkness at the end of the game
+		private var gameIsOver:Boolean = false;
 		
 		public function PlayState() 
 		{
@@ -37,6 +41,9 @@ package
 		override public function create():void
 		{
 			super.create();
+			
+			//Creating the Darkness overlay
+			Registry.darkness = new Darkness();
 			
 			//Holds the layers of the level of the game
 			Registry.level1 = new Level1;
@@ -66,25 +73,28 @@ package
 			zombieTimer = new FlxTimer();
 			zombieTimer.start(2, 0, Registry.zombies.drop);
 			
-			//Creating the Darkness overlay
-			darkness = new Darkness();
+			//Decrements the battery life
+			batteryTimer = new FlxTimer();
+			batteryTimer.start(1, 0, batteryDecrement);
 			
 			//The light immediately around the player
-			light = new PlayerLight(Registry.player.x, Registry.player.y, darkness);
-			add(light);
+			playerLight = new PlayerLight(Registry.player.x, Registry.player.y, Registry.darkness);
+			add(playerLight);
 			
 			//The flashlight emitting from the player
-			flashlight = new Flashlight(Registry.player.x, Registry.player.y, darkness);
+			flashlight = new Flashlight(Registry.player.x, Registry.player.y, Registry.darkness);
 			add(flashlight);
 			
 			//----*IMPORTANT*----
 			//The darkness is created before the light, but added after the light... Don't mess with it
-			//add(darkness);		//Commenting out this line will remove the darkness
+			add(Registry.darkness);		//Commenting out this line will remove the darkness
 			
 			//----*IMPORTANT*----
 			//Add anything after darkness that you dont want to get darkened
 			debug = new FlxText(0, 0, 200, "");
 			add(debug);
+			battery = new FlxText(0, 16, 200, "");
+			add(battery);
 		}
 		
 		override public function update():void
@@ -92,31 +102,59 @@ package
 			super.update();
 			
 			debug.text = "Score: " + Registry.score;
+			battery.text = "Battery: " + Registry.batteryLife;
 			
 			//Collisions with the map
 			FlxG.collide(Registry.player, Registry.level1.midground);
 			FlxG.collide(Registry.zombies, Registry.level1.midground);
 			FlxG.collide(Registry.splatters, Registry.level1.midground);
-			
+
 			//If bullet hits zombie call funciton
 			FlxG.overlap(Registry.zombies, Registry.bullets, Registry.zombies.bulletHitZombie);
 			
 			//If zombie hits player its game over
 			FlxG.overlap(Registry.player, Registry.zombies, gameOver);
+			
+			if (Registry.player.y > FlxG.height && gameIsOver == false)
+				gameOver(Registry.player, new Zombie);
+			
+			if (Registry.batteryLife == 0)
+			{
+				flashlight.exists = false;
+			}
+			else if(gameIsOver == false)
+			{
+				flashlight.exists = true;
+			}
 		}
 		
 		//Override the draw function to fill the screen with the darkness
 		override public function draw():void {
-			darkness.fill(0xff000000);
+			if(gameIsOver == false)
+				Registry.darkness.fill(0xff000000);
+			else
+				Registry.darkness.fill(0xff777777);
 			super.draw();
 		}
 		
 		//The current ending to the game. 
 		private function gameOver(player:FlxObject, zombie:FlxObject):void 
 		{
-			darkness.kill();
 			Registry.splatters.playerDeath(Registry.player.x, Registry.player.y);
 			Registry.player.kill();
+			playerLight.exists = false;
+			flashlight.exists = false;
+			gameIsOver = true;
+			var gameOverMenu:GameOverMenu = new GameOverMenu();
+			add(gameOverMenu);
+		}
+		
+		private function batteryDecrement(time:FlxTimer):void 
+		{
+			if (Registry.batteryLife != 0)
+			{
+				Registry.batteryLife--;
+			}
 		}
 	}
 }

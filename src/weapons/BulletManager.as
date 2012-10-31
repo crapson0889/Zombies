@@ -13,7 +13,7 @@ package  weapons
 			super();
 			
 			//	There are 40 bullets in our pool
-			for (var i:int = 0; i < 40; i++)
+			for (var i:int = 0; i < 100; i++)
 			{
 				add(new Bullet);
 			}
@@ -30,8 +30,8 @@ package  weapons
 		public function bulletHitTile(bullet:Bullet, tile:FlxTilemap):void 
 		{
 			bullet.exists = false;
-			bullet.kill();
-			add(new Bullet());
+			//bullet.kill();
+			//add(new Bullet());
 		}
 		
 	}
