@@ -36,7 +36,7 @@ package levels
 			
 			supplyLight.alpha = lightAlpha;
 			
-			if (Registry.player.overlaps(supply))
+			if (Registry.player.sprite.overlaps(supply))
 			{
 				Registry.score++;
 				supply.kill();

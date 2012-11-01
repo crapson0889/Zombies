@@ -15,7 +15,7 @@ package
 
 	import fx.Darkness;
 	import org.flixel.*;
-	import player.Player;
+	import player.PlayerManager;
 	import weapons.BulletManager;
 	import zombies.ZombieManager;
 	import fx.SplatterManager;
@@ -23,7 +23,7 @@ package
 	
 	public class Registry
 	{
-		public static var player:Player;
+		public static var player:PlayerManager;
 		public static var bullets:BulletManager;
 		public static var zombies:ZombieManager;
 		public static var splatters:SplatterManager;

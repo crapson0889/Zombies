@@ -16,8 +16,8 @@ package fx
 		{
 			super.update();
 			
-			x = Registry.player.x + 5;
-			y = Registry.player.y + 5;
+			x = Registry.player.sprite.x + 5;
+			y = Registry.player.sprite.y + 5;
 		}
 		
 	}

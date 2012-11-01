@@ -42,6 +42,8 @@ package
 		{
 			super.create();
 			
+			FlxG.mouse.hide();
+			
 			//Creating the Darkness overlay
 			Registry.darkness = new Darkness();
 			
@@ -62,7 +64,7 @@ package
 			add(Registry.splatters);
 			
 			//The user controlled player of the game
-			Registry.player = new Player;
+			Registry.player = new PlayerManager;
 			add(Registry.player);
 			
 			//Supply manager handles adding supplies and checking collisions
@@ -78,11 +80,11 @@ package
 			batteryTimer.start(1, 0, batteryDecrement);
 			
 			//The light immediately around the player
-			playerLight = new PlayerLight(Registry.player.x, Registry.player.y, Registry.darkness);
+			playerLight = new PlayerLight(Registry.player.sprite.x, Registry.player.sprite.y, Registry.darkness);
 			add(playerLight);
 			
 			//The flashlight emitting from the player
-			flashlight = new Flashlight(Registry.player.x, Registry.player.y, Registry.darkness);
+			flashlight = new Flashlight(Registry.player.sprite.x, Registry.player.sprite.y, Registry.darkness);
 			add(flashlight);
 			
 			//----*IMPORTANT*----
@@ -113,10 +115,10 @@ package
 			FlxG.overlap(Registry.zombies, Registry.bullets, Registry.zombies.bulletHitZombie);
 			
 			//If zombie hits player its game over
-			FlxG.overlap(Registry.player, Registry.zombies, gameOver);
+			FlxG.overlap(Registry.player.sprite, Registry.zombies, gameOver);
 			
-			if (Registry.player.y > FlxG.height && gameIsOver == false)
-				gameOver(Registry.player, new Zombie);
+			if (Registry.player.sprite.y > FlxG.height && gameIsOver == false)
+				gameOver(Registry.player.sprite, new Zombie);
 			
 			if (Registry.batteryLife == 0)
 			{
@@ -140,7 +142,7 @@ package
 		//The current ending to the game. 
 		private function gameOver(player:FlxObject, zombie:FlxObject):void 
 		{
-			Registry.splatters.playerDeath(Registry.player.x, Registry.player.y);
+			Registry.splatters.playerDeath(Registry.player.sprite.x, Registry.player.sprite.y);
 			Registry.player.kill();
 			playerLight.exists = false;
 			flashlight.exists = false;

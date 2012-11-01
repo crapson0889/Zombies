@@ -23,7 +23,7 @@ package  weapons
 		{
 			if (getFirstAvailable())
 			{
-				Bullet(getFirstAvailable()).fire(Registry.player.x, Registry.player.y);
+				Bullet(getFirstAvailable()).fire(Registry.player.sprite.x, Registry.player.sprite.y);
 			}
 		}
 

@@ -25,7 +25,7 @@ package  weapons
 		{
 			x = bx;
 			y = by + 6;
-			if (Registry.player.facing == 1)
+			if (Registry.player.sprite.facing == 1)
 			{
 				velocity.x = -speed;
 				direction = -1;
