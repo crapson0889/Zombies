@@ -40,7 +40,7 @@ package levels
 			{
 				Registry.score++;
 				supply.kill();
-				Registry.batteryLife += 10;
+				Registry.player.batteryLife += 10;
 				newSupply();
 			}
 		}

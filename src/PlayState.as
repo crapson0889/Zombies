@@ -17,17 +17,14 @@ package
 	
 	public class PlayState extends FlxState
 	{	
+		[Embed(source = '../assets/cursor.png')] private var cursorPNG:Class;
+		
 		//Simple text overlay... Will be replaced by a traditional GUI overlay later on
 		private var debug:FlxText;
 		private var battery:FlxText;
 		
 		//A timer to output a zombie into the map every few seconds
 		private var zombieTimer: FlxTimer;
-		private var batteryTimer: FlxTimer;
-		
-		//Various lighting effects
-		private var playerLight:PlayerLight;
-		private var flashlight:Flashlight;
 		
 		//Used to lighten the darkness at the end of the game
 		private var gameIsOver:Boolean = false;
@@ -42,7 +39,7 @@ package
 		{
 			super.create();
 			
-			FlxG.mouse.hide();
+			FlxG.mouse.load(cursorPNG, 1, 8, 8);
 			
 			//Creating the Darkness overlay
 			Registry.darkness = new Darkness();
@@ -75,18 +72,6 @@ package
 			zombieTimer = new FlxTimer();
 			zombieTimer.start(2, 0, Registry.zombies.drop);
 			
-			//Decrements the battery life
-			batteryTimer = new FlxTimer();
-			batteryTimer.start(1, 0, batteryDecrement);
-			
-			//The light immediately around the player
-			playerLight = new PlayerLight(Registry.player.sprite.x, Registry.player.sprite.y, Registry.darkness);
-			add(playerLight);
-			
-			//The flashlight emitting from the player
-			flashlight = new Flashlight(Registry.player.sprite.x, Registry.player.sprite.y, Registry.darkness);
-			add(flashlight);
-			
 			//----*IMPORTANT*----
 			//The darkness is created before the light, but added after the light... Don't mess with it
 			add(Registry.darkness);		//Commenting out this line will remove the darkness
@@ -104,10 +89,10 @@ package
 			super.update();
 			
 			debug.text = "Score: " + Registry.score;
-			battery.text = "Battery: " + Registry.batteryLife;
+			battery.text = "Battery: " + Registry.player.batteryLife;
 			
 			//Collisions with the map
-			FlxG.collide(Registry.player, Registry.level1.midground);
+			FlxG.collide(Registry.player.sprite, Registry.level1.midground);
 			FlxG.collide(Registry.zombies, Registry.level1.midground);
 			FlxG.collide(Registry.splatters, Registry.level1.midground);
 
@@ -119,15 +104,6 @@ package
 			
 			if (Registry.player.sprite.y > FlxG.height && gameIsOver == false)
 				gameOver(Registry.player.sprite, new Zombie);
-			
-			if (Registry.batteryLife == 0)
-			{
-				flashlight.exists = false;
-			}
-			else if(gameIsOver == false)
-			{
-				flashlight.exists = true;
-			}
 		}
 		
 		//Override the draw function to fill the screen with the darkness
@@ -144,19 +120,9 @@ package
 		{
 			Registry.splatters.playerDeath(Registry.player.sprite.x, Registry.player.sprite.y);
 			Registry.player.kill();
-			playerLight.exists = false;
-			flashlight.exists = false;
 			gameIsOver = true;
 			var gameOverMenu:GameOverMenu = new GameOverMenu();
 			add(gameOverMenu);
-		}
-		
-		private function batteryDecrement(time:FlxTimer):void 
-		{
-			if (Registry.batteryLife != 0)
-			{
-				Registry.batteryLife--;
-			}
 		}
 	}
 }

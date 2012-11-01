@@ -34,7 +34,6 @@ package
 		public static var darkness:Darkness;
 		
 		public static const zombieCount:uint = 10;
-		public static var batteryLife:uint = 10;
 		
 		public function Registry()
 		{
@@ -51,7 +50,6 @@ package
 			supplyManager = null;
 			darkness = null;
 			score = 0;
-			batteryLife = 10;
 		}
 	}
 }

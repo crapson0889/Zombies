@@ -9,7 +9,7 @@ package
 		
 		public function GameOverMenu() 
 		{
-			FlxG.mouse.show();
+			FlxG.mouse.load();
 			restartButton = new FlxButton(FlxG.width/2 - 40, FlxG.height/2 - 10, "Restart", restartGame);
 			add(restartButton);
 			

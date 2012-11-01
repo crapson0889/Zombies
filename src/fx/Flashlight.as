@@ -15,6 +15,11 @@ package fx
 		override public function update():void {
 			super.update();
 			
+			x = Registry.player.sprite.x + 72;
+			y = Registry.player.sprite.y + 72;
+			
+			//Old code for turning the flashlight. Might come back to limiting the rotation to just one side depending on which way the character is facing.
+			/*
 			if (Registry.player.sprite.facing == FlxObject.RIGHT)
 			{
 				facing = FlxObject.RIGHT;
@@ -30,6 +35,7 @@ package fx
 			}
 			
 			facing = Registry.player.sprite.facing;
+			*/
 		}
 		
 	}
