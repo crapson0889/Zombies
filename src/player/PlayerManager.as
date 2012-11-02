@@ -24,7 +24,8 @@ package player
 			
 			gun = new FlxWeapon("gun");
 			gun.makeImageBullet(50, bulletPNG, 0);
-			gun.setBulletDirection(FlxWeapon.BULLET_RIGHT, 200);
+			//gun.setBulletDirection(FlxWeapon.BULLET_RIGHT, 200);
+			gun.setBulletSpeed(200);
 			add(gun.group);
 			
 			add(sprite);
@@ -77,15 +78,15 @@ package player
 			
 			gun.setFiringPosition(sprite.x, sprite.y, 6, 6);
 			
-			if (sprite.facing == FlxObject.RIGHT)
+			/*if (sprite.facing == FlxObject.RIGHT)
 			{
 				gun.setBulletDirection(FlxWeapon.BULLET_RIGHT, 200);
 			}
 			else
 			{
 				gun.setBulletDirection(FlxWeapon.BULLET_LEFT, 200);
-			}
-			if (FlxG.mouse.pressed())
+			}*/
+			if (FlxG.mouse.justPressed())
 			{
 				gun.fireAtMouse();
 			}

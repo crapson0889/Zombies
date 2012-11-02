@@ -49,16 +49,16 @@ package
 			add(Registry.level1);
 			
 			//Holds all the bullets of the game
-			Registry.bullets = new BulletManager;
-			add(Registry.bullets);
-			
-			//Holds all the zombies of the game
-			Registry.zombies = new ZombieManager;
-			add(Registry.zombies);
+			//Registry.bullets = new BulletManager;
+			//add(Registry.bullets);
 			
 			//Holds all the blood emitters of the game
 			Registry.splatters = new SplatterManager;
 			add(Registry.splatters);
+			
+			//Holds all the zombies of the game
+			Registry.zombies = new ZombieManager;
+			add(Registry.zombies);
 			
 			//The user controlled player of the game
 			Registry.player = new PlayerManager;
@@ -97,7 +97,7 @@ package
 			FlxG.collide(Registry.splatters, Registry.level1.midground);
 
 			//If bullet hits zombie call funciton
-			FlxG.overlap(Registry.zombies, Registry.bullets, Registry.zombies.bulletHitZombie);
+			FlxG.overlap(Registry.zombies, Registry.player.gun.group, Registry.zombies.bulletHitZombie);
 			
 			//If zombie hits player its game over
 			FlxG.overlap(Registry.player.sprite, Registry.zombies, gameOver);

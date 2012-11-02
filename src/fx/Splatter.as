@@ -38,9 +38,16 @@ package fx
 			}
 		}
 		
-		public function setDirection(direction:int):void
+		public function setDirection(bullet:FlxPoint, gun:FlxPoint):void
 		{
-			setXSpeed(100 * direction, 200 * direction);
+			var direction:Number = bullet.x - gun.x;
+			if (direction < 0)
+				direction - 100;
+			else
+				direction + 100;
+			setXSpeed(1 * direction, 2 * direction);
+			setYSpeed(-100, -200);
+			maxParticleSpeed = new FlxPoint(5, 5);
 		}
 	}
 }

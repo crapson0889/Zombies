@@ -20,14 +20,14 @@ package fx
 			}
 		}
 		
-		public function spurt(x:Number, y:Number, direction:int):void 
+		public function spurt(x:Number, y:Number, bullet:FlxPoint, gun:FlxPoint):void 
 		{
 			var splatter:Splatter = members[splatterCount];
 			
-			splatter.setDirection(direction);
-			splatter.x = x;
-			splatter.y = y;
-			splatter.setSize(3, 3);
+			splatter.setDirection(bullet, gun);
+			splatter.x = x + 8;
+			splatter.y = y + 8;
+			splatter.setSize(1, 1);
 			splatter.start(true, 3, 0.01);
 			
 			splatterCount++;
@@ -37,11 +37,11 @@ package fx
 			}
 		}
 		
-		public function explode(x:Number, y:Number, direction:int):void
+		public function explode(x:Number, y:Number, bullet:FlxPoint, gun:FlxPoint):void
 		{	
 			var splatter:Splatter = members[splatterCount];
 			
-			splatter.setDirection(direction);
+			splatter.setDirection(bullet, gun);
 			splatter.x = x;
 			splatter.y = y;
 			splatter.setSize(16, 16);

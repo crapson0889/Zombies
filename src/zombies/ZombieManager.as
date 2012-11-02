@@ -51,16 +51,16 @@ package zombies
 			}
 		}
 		
-		public function bulletHitZombie(zombie:Zombie, bullet:Bullet):void 
+		public function bulletHitZombie(zombie:Zombie, bullet:FlxObject):void 
 		{
 			bullet.exists = false;
 
 			zombie.health--;
-			Registry.splatters.spurt(bullet.x, bullet.y, bullet.direction);
+			Registry.splatters.spurt(zombie.x, zombie.y, new FlxPoint(bullet.x, bullet.y), new FlxPoint(Registry.player.sprite.x, Registry.player.sprite.y));
 			
 			if (zombie.health == 0)
 			{
-				Registry.splatters.explode(zombie.x, zombie.y, bullet.direction);
+				Registry.splatters.explode(zombie.x, zombie.y, new FlxPoint(bullet.x, bullet.y), new FlxPoint(Registry.player.sprite.x, Registry.player.sprite.y));
 				zombie.exists = false;
 			}
 		}
