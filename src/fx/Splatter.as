@@ -9,7 +9,7 @@ package fx
 	{
 		private var particle:FlxParticle;
 		
-		public function Splatter(bx:Number = 170, by:Number = 128, s:Number = 35)
+		public function Splatter(bx:Number = 170, by:Number = 128, s:Number = 25)
 		{
 			super(bx, by, s);
 			
@@ -26,7 +26,7 @@ package fx
 				particle = new FlxParticle();
 				particle.makeGraphic(2, 2, 0xffCC0000);
 				add(particle);
-				if (i % 5 == 0)
+				/*if (i % 5 == 0)
 				{
 					particle = new FlxParticle();
 					particle.makeGraphic(3, 3, 0xff819969);
@@ -34,7 +34,7 @@ package fx
 					particle = new FlxParticle();
 					particle.makeGraphic(3, 3, 0xffD4D7D8);
 					add(particle);
-				}
+				}*/
 			}
 		}
 		
@@ -42,11 +42,11 @@ package fx
 		{
 			var direction:Number = bullet.x - gun.x;
 			if (direction < 0)
-				direction - 100;
+				direction = -1;
 			else
-				direction + 100;
-			setXSpeed(1 * direction, 2 * direction);
-			setYSpeed(-100, -200);
+				direction = 1;
+			setXSpeed(100 * direction, 200 * direction);
+			//setYSpeed(-100, -200);
 			maxParticleSpeed = new FlxPoint(5, 5);
 		}
 	}

@@ -16,7 +16,6 @@ package
 	import fx.Darkness;
 	import org.flixel.*;
 	import player.PlayerManager;
-	import weapons.BulletManager;
 	import zombies.ZombieManager;
 	import fx.SplatterManager;
 	import levels.*;
@@ -24,7 +23,6 @@ package
 	public class Registry
 	{
 		public static var player:PlayerManager;
-		public static var bullets:BulletManager;
 		public static var zombies:ZombieManager;
 		public static var splatters:SplatterManager;
 		public static var level1:Level1;
@@ -42,7 +40,6 @@ package
 		public static function erase():void 
 		{
 			player = null;
-			bullets = null;
 			zombies = null;
 			splatters = null;
 			level1 = null;

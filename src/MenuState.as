@@ -5,7 +5,6 @@ package
 	
 	import org.flixel.*;
 	import player.*;
-	import weapons.*;
 	import fx.*;
 	import zombies.*;
 	import levels.*;
