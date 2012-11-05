@@ -8,8 +8,9 @@ package player
 	{
 		
 		public var sprite:PlayerSprite;
-		public var gun:PlayerWeapon;
-		public var gunSprite:GunSprite;
+		//public var gun:PlayerWeapon;
+		//public var gunSprite:GunSprite;
+		public var gun:GunManager;
 		
 		//Various lighting effects
 		private var playerLight:PlayerLight;
@@ -25,6 +26,8 @@ package player
 			
 			gunSprite = new GunSprite(sprite.x, sprite.y);
 			add(gunSprite);
+			
+			//gun = new GunManager();
 			
 			add(sprite);
 			
