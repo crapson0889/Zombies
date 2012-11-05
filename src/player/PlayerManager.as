@@ -6,27 +6,25 @@ package player
 
 	public class PlayerManager extends FlxGroup
 	{
-		[Embed(source = '../../assets/bullet.png')] private var bulletPNG:Class;
 		
 		public var sprite:PlayerSprite;
-		public var gun:FlxWeapon;
+		public var gun:PlayerWeapon;
+		public var gunSprite:GunSprite;
 		
 		//Various lighting effects
 		private var playerLight:PlayerLight;
-		private var flashlight:Flashlight;
-		
-		public var batteryLife:uint;
-		private var batteryTimer: FlxTimer;
+		public var flashlight:Flashlight;
+		public var flash:Flash;
 		
 		public function PlayerManager() 
 		{	
 			sprite = new PlayerSprite(FlxG.width / 2, FlxG.height / 2 - 20);
 			
-			gun = new FlxWeapon("gun");
-			gun.makeImageBullet(50, bulletPNG, 0);
-			//gun.setBulletDirection(FlxWeapon.BULLET_RIGHT, 200);
-			gun.setBulletSpeed(200);
+			gun = new PlayerWeapon("gun");
 			add(gun.group);
+			
+			gunSprite = new GunSprite(sprite.x, sprite.y);
+			add(gunSprite);
 			
 			add(sprite);
 			
@@ -52,7 +50,7 @@ package player
 			
 			//	Because we are using the MOVEMENT_ACCELERATES type the first value is the acceleration speed of the sprite
 			//	Think of it as the time it takes to reach maximum velocity. A value of 100 means it would take 1 second. A value of 400 means it would take 0.25 of a second.
-			FlxControl.player1.setMovementSpeed(400, 0, 100, 200, 400, 0);
+			FlxControl.player1.setMovementSpeed(1000, 0, 100, 200, 1000, 0);
 			
 			//	Set a downward gravity of 400px/sec
 			FlxControl.player1.setGravity(0, 400);
@@ -66,53 +64,22 @@ package player
 			flashlight.origin = new FlxPoint(0, 0);
 			add(flashlight);
 			
-			//Decrements the battery life
-			batteryTimer = new FlxTimer();
-			batteryTimer.start(1, 0, batteryDecrement);
-			batteryLife = 10;
+			flash = new Flash(sprite.x, sprite.y, Registry.darkness);
+			add(flash);
 		}
 		
 		override public function update():void 
 		{
 			super.update();
 			
+			//For whatever reason the game didn't like these functions in their actual class... whatever
 			gun.setFiringPosition(sprite.x, sprite.y, 6, 6);
 			
-			/*if (sprite.facing == FlxObject.RIGHT)
-			{
-				gun.setBulletDirection(FlxWeapon.BULLET_RIGHT, 200);
-			}
-			else
-			{
-				gun.setBulletDirection(FlxWeapon.BULLET_LEFT, 200);
-			}*/
 			if (FlxG.mouse.justPressed())
 			{
 				gun.fireAtMouse();
-			}
-			
-			if (batteryLife == 0)
-			{
-				flashlight.exists = false;
-			}
-			else
-			{
-				flashlight.exists = true;
-			}
-			
-			flashlight.angle = FlxU.getAngle(new FlxPoint(sprite.x, sprite.y) , new FlxPoint(FlxG.mouse.x, FlxG.mouse.y)) + 225;
-			
-			if (batteryLife > 10)
-			{
-				batteryLife = 10;
-			}
-		}
-		
-		private function batteryDecrement(time:FlxTimer):void 
-		{
-			if (batteryLife != 0)
-			{
-				batteryLife--;
+				gunSprite.play("fire");
+				flash.play("flash");
 			}
 		}
 		
