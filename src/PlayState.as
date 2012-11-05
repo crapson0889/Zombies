@@ -7,8 +7,10 @@ package
 	 * should be kept with the item itself. This will keep this file manageable and will allow
 	 * coders to understand what an object does without having to jump between sources.
 	 * */
+	import flash.display.LineScaleMode;
 	import org.flixel.*;
 	import player.*;
+	import weapons.*;
 	import fx.*;
 	import zombies.*;
 	import levels.*;
@@ -68,7 +70,7 @@ package
 			
 			//Spits out the zombies
 			zombieTimer = new FlxTimer();
-			//zombieTimer.start(2, 0, Registry.zombies.drop);
+			zombieTimer.start(2, 0, Registry.zombies.drop);
 			
 			//----*IMPORTANT*----
 			//The darkness is created before the light, but added after the light... Don't mess with it
@@ -87,14 +89,12 @@ package
 			super.update();
 			
 			debug.text = "Score: " + Registry.score;
-			battery.text = "Battery: " + Registry.player.flashlight.batteryLife;
+			battery.text = "Battery: " + Registry.player.batteryLife;
 			
 			//Collisions with the map
 			FlxG.collide(Registry.player.sprite, Registry.level1.midground);
 			FlxG.collide(Registry.zombies, Registry.level1.midground);
 			FlxG.collide(Registry.splatters, Registry.level1.midground);
-			
-			FlxG.collide(Registry.player.gun.group, Registry.level1.midground, Registry.player.gun.destroyBullet);
 
 			//If bullet hits zombie call funciton
 			FlxG.overlap(Registry.zombies, Registry.player.gun.group, Registry.zombies.bulletHitZombie);

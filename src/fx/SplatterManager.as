@@ -28,7 +28,7 @@ package fx
 			splatter.x = x + 8;
 			splatter.y = y + 8;
 			splatter.setSize(1, 1);
-			splatter.start(true, 1, 0.01);
+			splatter.start(true, 3, 0.01);
 			
 			splatterCount++;
 			if (splatterCount == Registry.zombieCount)

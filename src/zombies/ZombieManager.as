@@ -4,6 +4,7 @@ package zombies
 	 * 	The handler for all the Zombies in the game
 	 * */
 	import org.flixel.*;
+	import weapons.Bullet;
 	
 	public class ZombieManager extends FlxGroup
 	{
