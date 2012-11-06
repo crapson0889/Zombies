@@ -68,7 +68,7 @@ package
 			
 			//Spits out the zombies
 			zombieTimer = new FlxTimer();
-			//zombieTimer.start(2, 0, Registry.zombies.drop);
+			zombieTimer.start(2, 0, Registry.zombies.drop);
 			
 			//----*IMPORTANT*----
 			//The darkness is created before the light, but added after the light... Don't mess with it
