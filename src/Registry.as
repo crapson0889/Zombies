@@ -14,6 +14,7 @@ package
 	 * */
 
 	import fx.Darkness;
+	import fx.ExplosionManager;
 	import org.flixel.*;
 	import player.PlayerManager;
 	import zombies.ZombieManager;
@@ -30,6 +31,7 @@ package
 		public static var supplyManager:SupplyManager;
 		public static var score:uint;
 		public static var darkness:Darkness;
+		public static var explosions:ExplosionManager;
 		
 		public static const zombieCount:uint = 10;
 		

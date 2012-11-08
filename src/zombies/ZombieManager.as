@@ -50,13 +50,25 @@ package zombies
 			}
 		}
 		
+		public function explosionHitZombie(zombie:Zombie, bullet:FlxObject):void
+		{
+			bullet.exists = false;
+			zombie.health = zombie.health - .25;
+			
+			if (zombie.health == 0)
+			{
+				Registry.splatters.explode(zombie.x, zombie.y, new FlxPoint(bullet.x, bullet.y), new FlxPoint(Registry.player.sprite.x, Registry.player.sprite.y));
+				zombie.exists = false;
+			}
+			
+		}
 		public function bulletHitZombie(zombie:Zombie, bullet:FlxObject):void 
 		{
 			bullet.exists = false;
 
 			zombie.health--;
 			Registry.splatters.spurt(zombie.x, zombie.y, new FlxPoint(bullet.x, bullet.y), new FlxPoint(Registry.player.sprite.x, Registry.player.sprite.y));
-			
+			//Registry.explosions.explode(zombie.x, zombie.y, new FlxPoint(bullet.x, bullet.y), new FlxPoint(Registry.player.sprite.x, Registry.player.sprite.y));
 			if (zombie.health == 0)
 			{
 				Registry.splatters.explode(zombie.x, zombie.y, new FlxPoint(bullet.x, bullet.y), new FlxPoint(Registry.player.sprite.x, Registry.player.sprite.y));

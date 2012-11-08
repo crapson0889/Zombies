@@ -24,7 +24,7 @@ package
         //startButton(new FlxText(20,3,100,"Start Game"));
         add(startButton);
 		
-		add(new FlxText(100, 130, 300, "'A' and 'D' to move left/right \n" + "Spacebar to Jump! \n" + "Ctrl to shoot!"));
+		add(new FlxText(100, 130, 300, "'A' and 'D' to move left/right \n" + "Spacebar to Jump! \n" + "Mouse Click to shoot!"));
 		
 		FlxG.mouse.show();
 		}
