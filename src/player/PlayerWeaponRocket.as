@@ -10,23 +10,17 @@ package player
 	import org.flixel.FlxPoint;
 	import fx.*;
 	
-	public class PlayerWeapon extends FlxWeapon
+	public class PlayerWeaponRocket extends PlayerWeapon
 	{
 		[Embed(source = '../../assets/bullet.png')] private var bulletPNG:Class;
 		
-		public function PlayerWeapon(name:String) 
+		public function PlayerWeaponRocket(name:String) 
 		{
 			super(name);
-			makeImageBullet(50, bulletPNG, 0);
-			setBulletSpeed(200);
-			trace(FlxG.worldBounds.height, FlxG.worldBounds.width);
-			setBulletBounds(FlxG.worldBounds);
-			
-			
-			
+					
 		}
 		
-		public function destroyBullet(bullet:FlxObject, level:FlxObject):void
+		override public function destroyBullet(bullet:FlxObject, level:FlxObject):void
 		{
 			
 			if (bullet is Bullet)

@@ -29,6 +29,7 @@ package fx
 			explosion.y = y;
 			explosion.setSize(16, 16);
 			explosion.start(true, 3, 0.01);
+			explosion.lifespan = 1;
 			
 			explosionCount++;
 			if (explosionCount == Registry.zombieCount)

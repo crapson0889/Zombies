@@ -68,7 +68,7 @@ package zombies
 
 			zombie.health--;
 			Registry.splatters.spurt(zombie.x, zombie.y, new FlxPoint(bullet.x, bullet.y), new FlxPoint(Registry.player.sprite.x, Registry.player.sprite.y));
-			//Registry.explosions.explode(zombie.x, zombie.y, new FlxPoint(bullet.x, bullet.y), new FlxPoint(Registry.player.sprite.x, Registry.player.sprite.y));
+			Registry.explosions.explode(zombie.x, zombie.y, new FlxPoint(bullet.x, bullet.y), new FlxPoint(Registry.player.sprite.x, Registry.player.sprite.y));
 			if (zombie.health == 0)
 			{
 				Registry.splatters.explode(zombie.x, zombie.y, new FlxPoint(bullet.x, bullet.y), new FlxPoint(Registry.player.sprite.x, Registry.player.sprite.y));

@@ -97,6 +97,7 @@ package
 			FlxG.collide(Registry.player.sprite, Registry.level1.midground);
 			FlxG.collide(Registry.zombies, Registry.level1.midground);
 			FlxG.collide(Registry.splatters, Registry.level1.midground);
+			FlxG.collide(Registry.explosions, Registry.level1.midground);
 			
 			FlxG.collide(Registry.player.gun.group, Registry.level1.midground, Registry.player.gun.destroyBullet);
 
