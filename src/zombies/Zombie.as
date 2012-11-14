@@ -23,7 +23,7 @@ package zombies
 		
 		public function drop(bx:int, by:int, direction:int):void
 		{
-			health = 3;
+			health = 15;
 			x = bx;
 			y = by;
 			velocity.x = direction * speed;

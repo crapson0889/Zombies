@@ -1,5 +1,8 @@
 package player 
 {
+	/*
+	 * This Class should handle all of the basic functions and variables pertaining to the Player
+	 * */
 	import org.flixel.*;
 	import org.flixel.plugin.photonstorm.*;
 	import fx.*;
@@ -8,8 +11,15 @@ package player
 	{
 		
 		public var sprite:PlayerSprite;
-		public var gun:PlayerWeapon;
+		
+		public var pistol:PlayerWeapon;
+		public var rocket:PlayerWeaponRocket;
+		public var uzi:PlayerWeaponUzi;
+		public var rifle:PlayerWeaponRifle;
+		
 		public var gunSprite:GunSprite;
+		
+		private var currentGun:int;
 		
 		//Various lighting effects
 		private var playerLight:PlayerLight;
@@ -20,8 +30,16 @@ package player
 		{	
 			sprite = new PlayerSprite(FlxG.width / 2, FlxG.height / 2 - 20);
 			
-			gun = new PlayerWeapon("gun");
-			add(gun.group);
+			//Add all the guns *Insert meme here*!
+			currentGun = 1;
+			pistol = new PlayerWeapon("pistol");
+			add(pistol.group);
+			rocket = new PlayerWeaponRocket("rocket");
+			add(rocket.group);
+			uzi = new PlayerWeaponUzi("uzi");
+			add(uzi.group);
+			rifle = new PlayerWeaponRifle("rifle");
+			add(rifle.group);
 			
 			gunSprite = new GunSprite(sprite.x, sprite.y);
 			add(gunSprite);
@@ -42,11 +60,6 @@ package player
 			
 			//	And SPACE BAR will make them jump up to a maximum of 200 pixels (per second), only when touching the FLOOR
 			FlxControl.player1.setJumpButton("SPACE", FlxControlHandler.KEYMODE_PRESSED, 200, FlxObject.FLOOR, 250, 200);
-			
-			//FlxControl.player1.setFireButton("CONTROL", FlxControlHandler.KEYMODE_JUST_DOWN, 150, gun.fire);
-			
-			//	Stop the player running off the edge of the screen and falling into nothing
-			//FlxControl.player1.setBounds(16, 0, 288, 240);
 			
 			//	Because we are using the MOVEMENT_ACCELERATES type the first value is the acceleration speed of the sprite
 			//	Think of it as the time it takes to reach maximum velocity. A value of 100 means it would take 1 second. A value of 400 means it would take 0.25 of a second.
@@ -73,13 +86,58 @@ package player
 			super.update();
 			
 			//For whatever reason the game didn't like these functions in their actual class... whatever
-			gun.setFiringPosition(sprite.x, sprite.y, 6, 6);
+			gun().setFiringPosition(sprite.x, sprite.y, 6, 6);
 			
-			if (FlxG.mouse.justPressed())
+			//Tests to see if the weapon is automatic, calls mouse handlers accordingly then fires if mouse is pressed
+			if (gun().automatic)
 			{
-				gun.fireAtMouse();
-				gunSprite.play("fire");
-				flash.play("flash");
+				if (FlxG.mouse.pressed())
+				{
+					if (gun().fireAtMouse())
+					{
+						gunSprite.play("fire");
+						flash.play("flash");
+					}
+				}
+			}
+			else 
+			{
+				if (FlxG.mouse.justPressed())
+				{
+					if (gun().fireAtMouse())
+					{
+						gunSprite.play("fire");
+						flash.play("flash");
+					}
+				}
+			}
+			
+			//This section needs will be replaced by a function that selects a weapon at random when a supply package has a weapon
+			//		It will be removed when that is added
+			//		New function will need to handle the gunSprite as well
+			if (FlxG.keys.justPressed("H"))
+			{
+				if (currentGun == 4)
+					currentGun = 1;
+				currentGun++;
+			}
+		}
+		
+		//Return the current gun
+		public function gun():PlayerWeapon
+		{
+			switch (currentGun) 
+			{
+				case 1:
+					return pistol;
+				case 2:
+					return rocket;
+				case 3:
+					return uzi;
+				case 4
+					return rifle;
+				default:
+					return pistol;
 			}
 		}
 		

@@ -99,10 +99,10 @@ package
 			FlxG.collide(Registry.splatters, Registry.level1.midground);
 			FlxG.collide(Registry.explosions, Registry.level1.midground);
 			
-			FlxG.collide(Registry.player.gun.group, Registry.level1.midground, Registry.player.gun.destroyBullet);
+			FlxG.collide(Registry.player.gun().group, Registry.level1.midground, Registry.player.gun().bulletHit);
 
 			//If bullet hits zombie call function
-			FlxG.overlap(Registry.zombies, Registry.player.gun.group, Registry.zombies.bulletHitZombie);
+			FlxG.overlap(Registry.zombies, Registry.player.gun().group, Registry.player.gun().bulletHit);
 			
 			//If Particle from explosion hits zombie
 			FlxG.overlap(Registry.zombies, Registry.explosions, Registry.zombies.explosionHitZombie);
