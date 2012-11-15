@@ -9,7 +9,7 @@ package fx
 	{
 		private var particle:FlxParticle;
 		
-		public function Explosion(bx:Number = 170, by:Number = 128, s:Number = 25)
+		public function Explosion(bx:Number = 170, by:Number = 128, s:Number = 100)
 		{
 			super(bx, by, s);
 			
@@ -18,10 +18,11 @@ package fx
 			width = 16;
 			gravity = 400;
 			bounce = 0.2;
+			setXSpeed( -200, 200);
 			
 			exists = false;
 			
-			for (var i:int = 0; i < 25; i++)
+			for (var i:int = 0; i < 100; i++)
 			{
 				particle = new FlxParticle();
 				particle.makeGraphic(2, 2, 0xffffffff);
@@ -37,7 +38,7 @@ package fx
 				direction = -1;
 			else
 				direction = 1;
-			setXSpeed(100 * direction, 200 * direction);
+			setXSpeed(-200 * direction, 200 * direction);
 			//setYSpeed(-100, -200);
 			maxParticleSpeed = new FlxPoint(5, 5);
 		}

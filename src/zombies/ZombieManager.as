@@ -33,15 +33,15 @@ package zombies
 				switch (rand) 
 				{
 					case 0:
-					location = 80;
+					location = 88;
 					break;
 					
 					case 1:
-					location = 176;
-					break;
+					location = 192;
+			break;
 					
 					case 2:
-					location = 288;
+					location = 296;
 					break;
 					
 					default:
@@ -55,7 +55,7 @@ package zombies
 			bullet.exists = false;
 			zombie.health-=1;
 			
-			if (zombie.health == 0)
+			if (zombie.health <= 0)
 			{
 				Registry.splatters.explode(zombie.x, zombie.y, new FlxPoint(bullet.x, bullet.y), new FlxPoint(Registry.player.sprite.x, Registry.player.sprite.y));
 				zombie.exists = false;

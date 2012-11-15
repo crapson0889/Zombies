@@ -42,6 +42,7 @@ package levels
 				supply.kill();
 				Registry.player.flashlight.batteryLife += 10;
 				newSupply();
+				Registry.player.newRandomWeapon();
 			}
 		}
 		

@@ -13,7 +13,8 @@ package player
 		
 		//This is still being tested
 		public var automatic:Boolean = false;
-		public var damage:int = 5;
+		public var damage:uint = 5;
+		public var ammo:uint = 0;
 		
 		public function PlayerWeapon(name:String) 
 		{
@@ -23,7 +24,7 @@ package player
 			automatic = false;
 			//If the weapon is automatic, you will want to change the fire rate
 			//setFireRate(200);
-			makeImageBullet(50, bulletPNG, 0);
+			makeImageBullet(100, bulletPNG, 0);
 			setBulletSpeed(200);
 			trace(FlxG.worldBounds.height, FlxG.worldBounds.width);
 			setBulletBounds(FlxG.worldBounds);
@@ -39,14 +40,14 @@ package player
 				//This needs to be moved to PlayerWeaponRocket
 				//Registry.explosions.explode(object.x, object.y, new FlxPoint(bullet.x, bullet.y), new FlxPoint(Registry.player.sprite.x, Registry.player.sprite.y));
 				
-				if (object.health == 0)
+				if (object.health <= 0)
 				{
 					Registry.splatters.explode(object.x, object.y, new FlxPoint(bullet.x, bullet.y), new FlxPoint(Registry.player.sprite.x, Registry.player.sprite.y));
 					object.exists = false;
 				}
 			}
 			if(bullet is Bullet)
-				bullet.kill();
+				bullet.exists = false;
 		}
 		
 	}

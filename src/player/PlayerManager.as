@@ -17,9 +17,11 @@ package player
 		public var uzi:PlayerWeaponUzi;
 		public var rifle:PlayerWeaponRifle;
 		
+		public var ammo:int;
+		
 		public var gunSprite:GunSprite;
 		
-		private var currentGun:int;
+		public var currentGun:int;
 		
 		//Various lighting effects
 		private var playerLight:PlayerLight;
@@ -32,13 +34,14 @@ package player
 			
 			//Add all the guns *Insert meme here*!
 			currentGun = 1;
-			pistol = new PlayerWeapon("pistol");
+			ammo = 0;
+			pistol = new PlayerWeapon("Pistol");
 			add(pistol.group);
-			rocket = new PlayerWeaponRocket("rocket");
+			rocket = new PlayerWeaponRocket("Rocket");
 			add(rocket.group);
-			uzi = new PlayerWeaponUzi("uzi");
+			uzi = new PlayerWeaponUzi("Uzi");
 			add(uzi.group);
-			rifle = new PlayerWeaponRifle("rifle");
+			rifle = new PlayerWeaponRifle("Rifle");
 			add(rifle.group);
 			
 			gunSprite = new GunSprite(sprite.x, sprite.y);
@@ -97,6 +100,7 @@ package player
 					{
 						gunSprite.play("fire");
 						flash.play("flash");
+						ammo--;
 					}
 				}
 			}
@@ -108,8 +112,15 @@ package player
 					{
 						gunSprite.play("fire");
 						flash.play("flash");
+						ammo--;
 					}
 				}
+			}
+			
+			if (ammo <= 0)
+			{
+				ammo = 0;
+				currentGun = 1;
 			}
 			
 			//This section needs will be replaced by a function that selects a weapon at random when a supply package has a weapon
@@ -118,7 +129,7 @@ package player
 			if (FlxG.keys.justPressed("H"))
 			{
 				if (currentGun == 4)
-					currentGun = 1;
+					currentGun = 0;
 				currentGun++;
 			}
 		}
@@ -134,11 +145,17 @@ package player
 					return rocket;
 				case 3:
 					return uzi;
-				case 4
+				case 4:
 					return rifle;
 				default:
 					return pistol;
 			}
+		}
+		
+		public function newRandomWeapon():void
+		{
+			currentGun = Math.floor(Math.random() * 3) + 2;
+			ammo = gun().ammo;
 		}
 		
 	}

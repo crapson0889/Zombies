@@ -23,6 +23,7 @@ package player
 			automatic = false;
 			damage = 30;
 			setFireRate(2000);
+			ammo = 4;
 		}
 		
 		public override function bulletHit(bullet:FlxObject, object:FlxObject):void

@@ -5,6 +5,9 @@ package player
 	 * */
 	
 	import zombies.Zombie;
+	import org.flixel.FlxObject;
+	import org.flixel.FlxPoint;
+	import org.flixel.plugin.photonstorm.BaseTypes.Bullet;
 	
 	public class PlayerWeaponRifle extends PlayerWeapon
 	{
@@ -16,6 +19,7 @@ package player
 			automatic = false;
 			setFireRate(1000);
 			damage = 10;
+			ammo = 10;
 		}
 		
 		public override function bulletHit(bullet:FlxObject, object:FlxObject):void
@@ -24,13 +28,12 @@ package player
 			{
 				object.health -= damage;
 				
-				Registry.splatters.spurt(zombie.x, zombie.y, new FlxPoint(bullet.x, bullet.y), new FlxPoint(Registry.player.sprite.x, Registry.player.sprite.y));
-				Registry.explosions.explode(zombie.x, zombie.y, new FlxPoint(bullet.x, bullet.y), new FlxPoint(Registry.player.sprite.x, Registry.player.sprite.y));
+				Registry.splatters.spurt(object.x, object.y, new FlxPoint(bullet.x, bullet.y), new FlxPoint(Registry.player.sprite.x, Registry.player.sprite.y));
 				
-				if (zombie.health == 0)
+				if (object.health <= 0)
 				{
-					Registry.splatters.explode(zombie.x, zombie.y, new FlxPoint(bullet.x, bullet.y), new FlxPoint(Registry.player.sprite.x, Registry.player.sprite.y));
-					zombie.exists = false;
+					Registry.splatters.explode(object.x, object.y, new FlxPoint(bullet.x, bullet.y), new FlxPoint(Registry.player.sprite.x, Registry.player.sprite.y));
+					object.exists = false;
 				}
 			}
 			else if(bullet is Bullet)

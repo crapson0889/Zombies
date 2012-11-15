@@ -10,6 +10,7 @@ package player
 			damage = 3;
 			automatic = true;
 			setFireRate(75);
+			ammo = 32;
 		}
 		
 	}

@@ -24,7 +24,7 @@ package fx
 		{	
 			var explosion:Explosion = members[explosionCount];
 			
-			explosion.setDirection(bullet, gun);
+			//explosion.setDirection(bullet, gun);
 			explosion.x = x;
 			explosion.y = y;
 			explosion.setSize(16, 16);

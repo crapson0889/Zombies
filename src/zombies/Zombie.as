@@ -10,7 +10,7 @@ package zombies
 		[Embed(source = '../../assets/zombie.png')] private var zombiePNG:Class;
 		
 		public var speed:int = 25;
-		public var gravity:int = 400;
+		public var gravity:int = 200;
 		private var lastDirection:int = 0;
 		
 		public function Zombie() 
