@@ -77,7 +77,7 @@ package
 			
 			//----*IMPORTANT*----
 			//The darkness is created before the light, but added after the light... Don't mess with it
-			add(Registry.darkness);		//Commenting out this line will remove the darkness
+			//add(Registry.darkness);		//Commenting out this line will remove the darkness
 			
 			//----*IMPORTANT*----
 			//Add anything after darkness that you dont want to get darkened

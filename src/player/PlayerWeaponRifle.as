@@ -1,7 +1,7 @@
 package player 
 {
 	/*
-	 * Slow firing high powered semi-automatic
+	 * Slow firing high powered semi-automatic that has bullets that travel through the zombies
 	 * */
 	
 	import zombies.Zombie;
@@ -17,11 +17,12 @@ package player
 			super(name);
 			
 			automatic = false;
-			setFireRate(1000);
+			setFireRate(1000); //Might need to mess with this value. The weapon feels fast for being a one hit kill on the zombies. 
 			damage = 10;
 			ammo = 10;
 		}
 		
+		//We override this function so that the bullet doesn't disappear unless it hits a wall. This creates the cool effect of the bullet traveling through the zombie.
 		public override function bulletHit(bullet:FlxObject, object:FlxObject):void
 		{
 			if (object is Zombie)

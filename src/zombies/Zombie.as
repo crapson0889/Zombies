@@ -16,13 +16,15 @@ package zombies
 		public function Zombie() 
 		{
 			super(0, 0);
-			loadGraphic(zombiePNG, true, true, 16, 19, true);
-			addAnimation("walk", [0, 1, 2, 3, 4, 5], 10, true);
+			//loadGraphic(zombiePNG, true, true, 16, 19, true);
+			//addAnimation("walk", [0, 1, 2, 3, 4, 5], 10, true);
 			exists = false;
 		}
 		
 		public function drop(bx:int, by:int, direction:int):void
 		{
+			loadGraphic(zombiePNG, true, true, 16, 19, true);
+			addAnimation("walk", [0, 1, 2, 3, 4, 5], 10, true);
 			health = 15;
 			x = bx;
 			y = by;

@@ -33,16 +33,16 @@ package zombies
 				switch (rand) 
 				{
 					case 0:
-					location = 88;
-					break;
+						location = 88;
+						break;
 					
 					case 1:
-					location = 192;
-			break;
+						location = 192;
+						break;
 					
 					case 2:
-					location = 296;
-					break;
+						location = 296;
+						break;
 					
 					default:
 				}
