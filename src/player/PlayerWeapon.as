@@ -11,6 +11,10 @@ package player
 	{
 		[Embed(source = '../../assets/bullet.png')] private var bulletPNG:Class;
 		
+		//Sounds needed in this class: bullet hits zombie, Zombie Death noise
+		[Embed(source = '../../assets/sounds/bullethit.mp3')] protected var hitSND:Class;
+		[Embed(source = '../../assets/sounds/zombiedies.mp3')] protected var zdeathSND:Class;
+		
 		//This is still being tested
 		public var automatic:Boolean = false;
 		public var damage:uint = 5;
@@ -44,6 +48,11 @@ package player
 				{
 					Registry.splatters.explode(object.x, object.y, new FlxPoint(bullet.x, bullet.y), new FlxPoint(Registry.player.sprite.x, Registry.player.sprite.y));
 					object.exists = false;
+					FlxG.play(zdeathSND);
+				}
+				else
+				{
+					FlxG.play(hitSND);
 				}
 			}
 			if(bullet is Bullet)

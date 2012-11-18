@@ -8,6 +8,7 @@ package levels
 		[Embed(source = "dungeon/mapCSV_Group1_Supplies.csv", mimeType = "application/octet-stream")] public var supplyCSV:Class;
 		[Embed(source = "dungeon/terrain.png")] public var tileset:Class;
 		[Embed(source = "../../assets/supplyLight.png")] private var SupplyLightImageClass:Class;
+		[Embed(source = "../../assets/sounds/supply.mp3")] private var supplySND:Class;
 		
 		public var supply:Supply;
 		private var supplyLight:Light;
@@ -41,6 +42,7 @@ package levels
 				Registry.score++;
 				supply.kill();
 				Registry.player.flashlight.batteryLife += 10;
+				FlxG.play(supplySND);
 				newSupply();
 				Registry.player.newRandomWeapon();
 			}

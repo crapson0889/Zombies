@@ -7,6 +7,7 @@ package zombies
 	
 	public class Zombie extends FlxSprite
 	{
+		[Embed(source = '../../assets/sounds/zombiespawn1.mp3')] protected var spawnSND:Class; //Embed Zombie Spawn Sound
 		[Embed(source = '../../assets/zombie.png')] private var zombiePNG:Class;
 		
 		public var speed:int = 25;
@@ -32,6 +33,7 @@ package zombies
 			velocity.y = gravity;
 			lastDirection = direction;
 			exists = true;
+			FlxG.play(spawnSND); //Play Zombie Spawn Sound
 		}
 		
 		override public function update():void 

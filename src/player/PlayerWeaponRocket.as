@@ -7,7 +7,7 @@ package player
 	//import org.flixel.plugin.photonstorm.FlxWeapon;
 	import org.flixel.plugin.photonstorm.BaseTypes.Bullet;
 	import org.flixel.FlxObject;
-	//import org.flixel.FlxG;
+	import org.flixel.FlxG;
 	import org.flixel.FlxPoint;
 	//import fx.*;
 	
@@ -15,6 +15,9 @@ package player
 	{
 		//Needs new bullet image. This is not being used at the moment
 		//[Embed(source = '../../assets/bullet.png')] private var bulletPNG:Class;
+		
+		//Sound Needed in this class: exploding rocket
+		[Embed(source = '../../assets/sounds/explosion1.mp3')] private var explosionSND:Class;
 		
 		public function PlayerWeaponRocket(name:String) 
 		{
@@ -31,6 +34,7 @@ package player
 			if (bullet is Bullet)
 			{
 				Registry.explosions.explode(bullet.x, bullet.y, new FlxPoint(bullet.x, bullet.y), new FlxPoint(Registry.player.sprite.x, Registry.player.sprite.y));
+				FlxG.play(explosionSND);
 			}
 			
 			super.bulletHit(bullet, object);

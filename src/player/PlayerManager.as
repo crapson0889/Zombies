@@ -9,6 +9,13 @@ package player
 
 	public class PlayerManager extends FlxGroup
 	{
+		//Sounds needed in this class: Player Death, Weapon fire, Jump
+		[Embed(source = '../../assets/sounds/playerdeath.mp3')] private var playerdeathSND:Class;
+		[Embed(source = '../../assets/sounds/gunshot1.mp3')] private var gunSND:Class;
+		[Embed(source = '../../assets/sounds/gunshot2.mp3')] private var rifleSND:Class;
+		[Embed(source = '../../assets/sounds/rocketlaunch.mp3')] private var rocketSND:Class;
+		[Embed(source = '../../assets/sounds/jump.mp3')] private var jumpSND:Class;
+
 		
 		public var sprite:PlayerSprite;
 		
@@ -101,6 +108,7 @@ package player
 						gunSprite.play("fire");
 						flash.play("flash");
 						ammo--;
+						FlxG.play(gunSND); 
 					}
 				}
 			}
@@ -113,6 +121,19 @@ package player
 						gunSprite.play("fire");
 						flash.play("flash");
 						ammo--;
+						
+						//Play appropriate firing sound based on weapon type
+						switch (gun()) 
+						{
+							case rocket:
+								FlxG.play(rocketSND);
+								break;
+							case rifle:
+								FlxG.play(rifleSND);
+								break;
+							default:
+								FlxG.play(gunSND);
+						}
 					}
 				}
 			}
@@ -132,6 +153,9 @@ package player
 					currentGun = 0;
 				currentGun++;
 			}
+			
+			if (FlxG.keys.justPressed("SPACE"))
+				FlxG.play(jumpSND);
 		}
 		
 		//Return the current gun
@@ -150,6 +174,12 @@ package player
 				default:
 					return pistol;
 			}
+		}
+		
+		override public function kill():void 
+		{
+			FlxG.play(playerdeathSND);
+			super.kill();
 		}
 		
 		public function newRandomWeapon():void

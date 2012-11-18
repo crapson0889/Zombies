@@ -7,6 +7,7 @@ package player
 	import zombies.Zombie;
 	import org.flixel.FlxObject;
 	import org.flixel.FlxPoint;
+	import org.flixel.FlxG;
 	import org.flixel.plugin.photonstorm.BaseTypes.Bullet;
 	
 	public class PlayerWeaponRifle extends PlayerWeapon
@@ -35,6 +36,11 @@ package player
 				{
 					Registry.splatters.explode(object.x, object.y, new FlxPoint(bullet.x, bullet.y), new FlxPoint(Registry.player.sprite.x, Registry.player.sprite.y));
 					object.exists = false;
+					FlxG.play(super.zdeathSND);
+				}
+				else
+				{
+					FlxG.play(super.hitSND);				
 				}
 			}
 			else if(bullet is Bullet)

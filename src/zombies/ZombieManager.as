@@ -7,6 +7,8 @@ package zombies
 	
 	public class ZombieManager extends FlxGroup
 	{
+		//Sound needed in this class: Zombie Death noise (for death from explosion splash damage).
+		[Embed(source = '../../assets/sounds/zombiedies.mp3')] protected var zdeathSND:Class;
 		public var currentDirection:int;
 		
 		public function ZombieManager() 
@@ -59,6 +61,7 @@ package zombies
 			{
 				Registry.splatters.explode(zombie.x, zombie.y, new FlxPoint(bullet.x, bullet.y), new FlxPoint(Registry.player.sprite.x, Registry.player.sprite.y));
 				zombie.exists = false;
+				FlxG.play(zdeathSND);
 			}
 			
 		}
