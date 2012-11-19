@@ -32,6 +32,7 @@ package
 		public static var score:uint;
 		public static var darkness:Darkness;
 		public static var explosions:ExplosionManager;
+		public static var logger:Logger;
 		
 		public static const zombieCount:uint = 10;
 		
