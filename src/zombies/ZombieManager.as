@@ -28,6 +28,8 @@ package zombies
 		{			
 			currentDirection = currentDirection * -1;
 			
+			
+			
 			if (getFirstAvailable())
 			{
 				var rand:uint = Math.floor(Math.random() * 3);
@@ -50,6 +52,8 @@ package zombies
 				}
 				Zombie(getFirstAvailable()).drop(location, 0, currentDirection);
 			}
+			
+			//Registry.logger.Log("new zombie", String(currentDirection), String(location), "a zombie has dropped");
 		}
 		
 		public function explosionHitZombie(zombie:Zombie, bullet:FlxObject):void
@@ -61,7 +65,8 @@ package zombies
 			{
 				Registry.splatters.explode(zombie.x, zombie.y, new FlxPoint(bullet.x, bullet.y), new FlxPoint(Registry.player.sprite.x, Registry.player.sprite.y));
 				zombie.exists = false;
-				FlxG.play(zdeathSND);
+				if (Registry.sound.sound)
+					FlxG.play(zdeathSND);
 			}
 			
 		}

@@ -12,6 +12,7 @@ package
 	import fx.*;
 	import zombies.*;
 	import levels.*;
+	import Logger;
 	
 	public class PlayState extends FlxState
 	{	
@@ -22,6 +23,7 @@ package
 		private var battery:FlxText;
 		private var weapon:FlxText;
 		private var ammo:FlxText;
+		public var soundButton:FlxButton;
 		
 		//A timer to output a zombie into the map every few seconds
 		private var zombieTimer: FlxTimer;
@@ -47,6 +49,10 @@ package
 			//Creating the Darkness overlay
 			Registry.darkness = new Darkness();
 			
+			Registry.logger = new Logger;
+			
+			Registry.sound = new soundManager;
+		
 			//Holds the layers of the level of the game
 			Registry.level1 = new Level1;
 			add(Registry.level1);
@@ -74,6 +80,9 @@ package
 			//Spits out the zombies
 			zombieTimer = new FlxTimer();
 			zombieTimer.start(2, 0, Registry.zombies.drop);
+			
+			soundButton = new FlxButton(300, 280, "Sound: On", switchSound);
+			add(soundButton);
 			
 			//----*IMPORTANT*----
 			//The darkness is created before the light, but added after the light... Don't mess with it
@@ -103,6 +112,29 @@ package
 			Registry.player.flashlight.batteryLife = 10;
 		}
 		
+		public function switchSound():void
+		{
+			
+			if (Registry.sound.sound == false)
+			{
+				Registry.sound.soundSwitch();
+				remove(soundButton, false);
+				soundButton = new FlxButton(300, 280, "Sound: On", switchSound);
+				add(soundButton);
+				//isSound = true;
+			}
+			
+			else if (Registry.sound.sound == true) 
+			{
+				Registry.sound.soundSwitch();
+				remove(soundButton, false);
+				soundButton = new FlxButton(300, 280, "Sound: Off", switchSound);
+				add(soundButton);
+				//isSound = false
+			}
+		}
+		
+	
 		override public function update():void
 		{
 			super.update();

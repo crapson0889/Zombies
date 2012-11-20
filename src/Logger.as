@@ -16,8 +16,10 @@ package
 	 * 							name1:value1~name2:value2 to build up information about the current
 	 * 							state of the public and private variables etc.
 	 * */
-	public class Logger extends Class
+	public class Logger
 	{	
+		
+		
 		public function Log(methodName:String, eventName:String, errorState:String, freeText:String) : void
 		{		
 			var aspURL:String = new String;
@@ -36,6 +38,7 @@ package
 			var myLoader:URLLoader = new URLLoader();
 			myLoader.dataFormat = URLLoaderDataFormat.VARIABLES;
 			myLoader.load(myXMLURL);	
+			
 		}
 		
 		public function ErrorLog(methodName:String, eventName:String, errorState:String, freeText:String) : void

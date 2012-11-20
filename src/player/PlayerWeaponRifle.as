@@ -28,6 +28,8 @@ package player
 		{
 			if (object is Zombie)
 			{
+				//Registry.logger.Log("rifleHit", "Rifle hit Zombie", "none", "a rifle shot has hit a zombie");
+				
 				object.health -= damage;
 				
 				Registry.splatters.spurt(object.x, object.y, new FlxPoint(bullet.x, bullet.y), new FlxPoint(Registry.player.sprite.x, Registry.player.sprite.y));
@@ -36,11 +38,14 @@ package player
 				{
 					Registry.splatters.explode(object.x, object.y, new FlxPoint(bullet.x, bullet.y), new FlxPoint(Registry.player.sprite.x, Registry.player.sprite.y));
 					object.exists = false;
-					FlxG.play(super.zdeathSND);
+					if (Registry.sound)
+						FlxG.play(super.zdeathSND);
+					//Registry.logger.Log("deadZombie", "Zombie killed", "none", "a zombie has been killed by rifle");
 				}
 				else
 				{
-					FlxG.play(super.hitSND);				
+					if (Registry.sound)
+						FlxG.play(super.hitSND);				
 				}
 			}
 			else if(bullet is Bullet)

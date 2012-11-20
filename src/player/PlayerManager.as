@@ -108,7 +108,8 @@ package player
 						gunSprite.play("fire");
 						flash.play("flash");
 						ammo--;
-						FlxG.play(gunSND); 
+						if (Registry.sound.sound)
+							FlxG.play(gunSND); 
 					}
 				}
 			}
@@ -126,13 +127,16 @@ package player
 						switch (gun()) 
 						{
 							case rocket:
-								FlxG.play(rocketSND);
+								if (Registry.sound.sound)
+									FlxG.play(rocketSND);
 								break;
 							case rifle:
-								FlxG.play(rifleSND);
+								if (Registry.sound.sound)	
+									FlxG.play(rifleSND);
 								break;
 							default:
-								FlxG.play(gunSND);
+								if (Registry.sound.sound)
+									FlxG.play(gunSND);
 						}
 					}
 				}
@@ -155,7 +159,8 @@ package player
 			}
 			
 			if (FlxG.keys.justPressed("SPACE"))
-				FlxG.play(jumpSND);
+				if (Registry.sound)
+					FlxG.play(jumpSND);
 		}
 		
 		//Return the current gun

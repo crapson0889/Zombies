@@ -38,6 +38,8 @@ package player
 		{
 			if (object is Zombie)
 			{
+				
+				
 				object.health -= damage;
 				
 				Registry.splatters.spurt(object.x, object.y, new FlxPoint(bullet.x, bullet.y), new FlxPoint(Registry.player.sprite.x, Registry.player.sprite.y));
@@ -48,12 +50,19 @@ package player
 				{
 					Registry.splatters.explode(object.x, object.y, new FlxPoint(bullet.x, bullet.y), new FlxPoint(Registry.player.sprite.x, Registry.player.sprite.y));
 					object.exists = false;
-					FlxG.play(zdeathSND);
+					if (Registry.sound.sound)
+					{
+						FlxG.play(zdeathSND);
+					}
+					//Registry.logger.Log("deadZombie", "Zombie killed", "none", "a zombie has been killed by pistol or uzi");
 				}
 				else
 				{
-					FlxG.play(hitSND);
+					if (Registry.sound.sound)
+						FlxG.play(hitSND);
 				}
+				
+				
 			}
 			if(bullet is Bullet)
 				bullet.exists = false;
