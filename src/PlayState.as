@@ -242,6 +242,8 @@ package
 		//The current ending to the game. 
 		private function gameOver(player:FlxObject, zombie:FlxObject):void 
 		{
+			if(Registry.options.logging)
+				Registry.logger.Log("Player killed", "Game Over", "None", "player has been killed by a zombie");
 			Registry.splatters.playerDeath(Registry.player.sprite.x, Registry.player.sprite.y);
 			Registry.player.kill();
 			gameIsOver = true;

@@ -36,8 +36,9 @@ package player
 				Registry.explosions.explode(bullet.x, bullet.y, new FlxPoint(bullet.x, bullet.y), new FlxPoint(Registry.player.sprite.x, Registry.player.sprite.y));
 				if (Registry.options.sound)
 					FlxG.play(explosionSND);
+				if(Registry.options.logging)
+					Registry.logger.Log("Dead Zombie", "Zombie Dead", "None", "A zombie has been killed by rocket");
 				
-				//Registry.logger.Log("rocketHit", "RocketHitsZombie", "none", "a rocket has hit a zombie");
 			}
 			
 			super.bulletHit(bullet, object);

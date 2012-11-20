@@ -54,7 +54,9 @@ package player
 					{
 						FlxG.play(zdeathSND);
 					}
-					//Registry.logger.Log("deadZombie", "Zombie killed", "none", "a zombie has been killed by pistol or uzi");
+					if(Registry.options.logging)
+						Registry.logger.Log("Dead Zombie", "Zombie Dead", "None", "A zombie has been killed  by pistol or uzi");
+					
 				}
 				else
 				{

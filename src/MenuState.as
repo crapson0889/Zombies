@@ -34,7 +34,7 @@ package
 			add(startButton);
 			
 			add(new FlxText(100, 130, 300, "'A' and 'D' to move left/right \n" + "Spacebar to Jump! \n" + "Mouse Click to shoot!\n" + 
-			"Click the button to turn sound on/off \n Green = on, Red = off"));
+			"Use buttons below to change settings"));
 			
 			soundButton = new FlxButton(100, 200, "Sound: " + String(Registry.options.sound), Registry.options.soundSwitch);
 			add(soundButton);

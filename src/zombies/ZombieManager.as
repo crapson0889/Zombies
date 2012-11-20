@@ -52,8 +52,8 @@ package zombies
 				}
 				Zombie(getFirstAvailable()).drop(location, 0, currentDirection);
 			}
-			
-			//Registry.logger.Log("new zombie", String(currentDirection), String(location), "a zombie has dropped");
+			if(Registry.options.logging)
+				Registry.logger.Log("New Zombie", String(location), "None", "a new zombie has dropped");
 		}
 		
 		public function explosionHitZombie(zombie:Zombie, bullet:FlxObject):void
@@ -67,6 +67,8 @@ package zombies
 				zombie.exists = false;
 				if (Registry.options.sound)
 					FlxG.play(zdeathSND);
+				if(Registry.options.logging)
+					Registry.logger.Log("Dead Zombie", "rocket", "None", "Zombie killed by shrapnel");
 			}
 			
 		}

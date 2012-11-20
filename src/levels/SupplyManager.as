@@ -46,6 +46,9 @@ package levels
 					FlxG.play(supplySND);
 				newSupply();
 				Registry.player.newRandomWeapon();
+				
+				if(Registry.options.logging)
+					Registry.logger.Log("Supplies Gathered", "new score: " + Registry.score, "None", "Player has collected supplies");
 			}
 		}
 		

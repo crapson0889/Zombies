@@ -40,7 +40,9 @@ package player
 					object.exists = false;
 					if (Registry.options.sound)
 						FlxG.play(super.zdeathSND);
-					//Registry.logger.Log("deadZombie", "Zombie killed", "none", "a zombie has been killed by rifle");
+					if(Registry.options.logging)
+						Registry.logger.Log("Dead Zombie", "Zombie Dead", "None", "A zombie has been killed  by rifle");
+					
 				}
 				else
 				{
