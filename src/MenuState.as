@@ -19,6 +19,7 @@ package
 		public function MenuState()
 		{
 		
+		
 		//Registry.sound = true;
 		
 		var title:FlxText = new FlxText(100, 50, 300, "Zombie Game!");
@@ -31,7 +32,7 @@ package
 		
 		
 		add(new FlxText(100, 130, 300, "'A' and 'D' to move left/right \n" + "Spacebar to Jump! \n" + "Mouse Click to shoot!\n" + 
-						"Double click the button to turn sound on/off"));
+						"Click the button to turn sound on/off \n Green = on, Red = off"));
 		
 		FlxG.mouse.show();
 		}
@@ -44,6 +45,7 @@ package
 		
 		private function startGame():void
         {
+			
             FlxG.switchState(new PlayState());
         }
 		

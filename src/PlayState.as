@@ -24,6 +24,8 @@ package
 		private var weapon:FlxText;
 		private var ammo:FlxText;
 		public var soundButton:FlxButton;
+		public var soundOn:FlxText = new FlxText(20, 0, 400, "Sound: On");
+		public var soundOff:FlxText = new FlxText(20, 0, 400, "Sound: Off");
 		
 		//A timer to output a zombie into the map every few seconds
 		private var zombieTimer: FlxTimer;
@@ -49,7 +51,10 @@ package
 			//Creating the Darkness overlay
 			Registry.darkness = new Darkness();
 			
+			//Initialize the Logger
 			Registry.logger = new Logger;
+			//Entry in the logger for a new run, to distinguish between executions
+			Registry.logger.Log("new run", "New Game Execution", "none", "new launch");
 			
 			Registry.sound = new soundManager;
 		
@@ -81,8 +86,7 @@ package
 			zombieTimer = new FlxTimer();
 			zombieTimer.start(2, 0, Registry.zombies.drop);
 			
-			soundButton = new FlxButton(300, 280, "Sound: On", switchSound);
-			add(soundButton);
+			
 			
 			//----*IMPORTANT*----
 			//The darkness is created before the light, but added after the light... Don't mess with it
@@ -99,6 +103,11 @@ package
 			ammo = new FlxText(0, 48, 200, "");
 			add(ammo);
 			
+			//button to run sound on/off
+			soundButton = new FlxButton(300, 280, "Sound", switchSound);
+			soundButton.color = 0x00FF00
+			add(soundButton);
+			
 			Registry.player.exists = false;
 			
 			introTimer = new FlxTimer();
@@ -114,24 +123,18 @@ package
 		
 		public function switchSound():void
 		{
+			//Registry.logger.Log("sound button", "pressed", "none", "the button to switch sound has been pressed " + String(Registry.sound.sound));
+			Registry.sound.soundSwitch();
+			Registry.logger.Log("sound button", "processed", "none", "sound is now " + String(Registry.sound.sound));
 			
-			if (Registry.sound.sound == false)
-			{
-				Registry.sound.soundSwitch();
-				remove(soundButton, false);
-				soundButton = new FlxButton(300, 280, "Sound: On", switchSound);
-				add(soundButton);
-				//isSound = true;
+			if (Registry.sound.sound) {
+				soundButton.color = 0x00FF00;
 			}
 			
-			else if (Registry.sound.sound == true) 
-			{
-				Registry.sound.soundSwitch();
-				remove(soundButton, false);
-				soundButton = new FlxButton(300, 280, "Sound: Off", switchSound);
-				add(soundButton);
-				//isSound = false
+			else{
+				soundButton.color = 0xFF0000;
 			}
+			
 		}
 		
 	

@@ -183,7 +183,8 @@ package player
 		
 		override public function kill():void 
 		{
-			FlxG.play(playerdeathSND);
+			if (Registry.sound.sound)
+				FlxG.play(playerdeathSND);
 			super.kill();
 		}
 		

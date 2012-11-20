@@ -38,13 +38,13 @@ package player
 				{
 					Registry.splatters.explode(object.x, object.y, new FlxPoint(bullet.x, bullet.y), new FlxPoint(Registry.player.sprite.x, Registry.player.sprite.y));
 					object.exists = false;
-					if (Registry.sound)
+					if (Registry.sound.sound)
 						FlxG.play(super.zdeathSND);
 					//Registry.logger.Log("deadZombie", "Zombie killed", "none", "a zombie has been killed by rifle");
 				}
 				else
 				{
-					if (Registry.sound)
+					if (Registry.sound.sound)
 						FlxG.play(super.hitSND);				
 				}
 			}

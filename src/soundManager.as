@@ -4,7 +4,7 @@ package
 
 import org.flixel.*;
 
-public class soundManager extends FlxGroup
+public class soundManager
 {
 	public var sound:Boolean;
 	
