@@ -33,7 +33,7 @@ package
 		public static var darkness:Darkness;
 		public static var explosions:ExplosionManager;
 		public static var logger:Logger;
-		public static var sound:soundManager;
+		public static var options:OptionManager;
 		public static var logging:Boolean;
 		
 		public static const zombieCount:uint = 10;

@@ -23,9 +23,9 @@ package
 		private var battery:FlxText;
 		private var weapon:FlxText;
 		private var ammo:FlxText;
-		public var soundButton:FlxButton;
-		public var soundOn:FlxText = new FlxText(20, 0, 400, "Sound: On");
-		public var soundOff:FlxText = new FlxText(20, 0, 400, "Sound: Off");
+		//public var soundButton:FlxButton;
+		//public var soundOn:FlxText = new FlxText(20, 0, 400, "Sound: On");
+		//public var soundOff:FlxText = new FlxText(20, 0, 400, "Sound: Off");
 		
 		//A timer to output a zombie into the map every few seconds
 		private var zombieTimer: FlxTimer;
@@ -55,8 +55,6 @@ package
 			Registry.logger = new Logger;
 			//Entry in the logger for a new run, to distinguish between executions
 			Registry.logger.Log("new run", "New Game Execution", "none", "new launch");
-			
-			Registry.sound = new soundManager;
 		
 			//Holds the layers of the level of the game
 			Registry.level1 = new Level1;
@@ -86,8 +84,6 @@ package
 			zombieTimer = new FlxTimer();
 			zombieTimer.start(2, 0, Registry.zombies.drop);
 			
-			
-			
 			//----*IMPORTANT*----
 			//The darkness is created before the light, but added after the light... Don't mess with it
 			//add(Registry.darkness);		//Commenting out this line will remove the darkness
@@ -103,10 +99,13 @@ package
 			ammo = new FlxText(0, 48, 200, "");
 			add(ammo);
 			
+			//This is no longer needed... The issue with the sound not being able to be toggled in the MenuState has been fixed
+			/*
 			//button to run sound on/off
 			soundButton = new FlxButton(300, 280, "Sound", switchSound);
 			soundButton.color = 0x00FF00
 			add(soundButton);
+			*/
 			
 			Registry.player.exists = false;
 			
@@ -121,6 +120,8 @@ package
 			Registry.player.flashlight.batteryLife = 10;
 		}
 		
+		//This is no longer needed... The issue with the sound not being able to be toggled in the MenuState has been fixed
+		/*
 		public function switchSound():void
 		{
 			//Registry.logger.Log("sound button", "pressed", "none", "the button to switch sound has been pressed " + String(Registry.sound.sound));
@@ -136,8 +137,8 @@ package
 			}
 			
 		}
+		*/
 		
-	
 		override public function update():void
 		{
 			super.update();

@@ -108,7 +108,7 @@ package player
 						gunSprite.play("fire");
 						flash.play("flash");
 						ammo--;
-						if (Registry.sound.sound)
+						if (Registry.options.sound)
 							FlxG.play(gunSND); 
 					}
 				}
@@ -127,15 +127,15 @@ package player
 						switch (gun()) 
 						{
 							case rocket:
-								if (Registry.sound.sound)
+								if (Registry.options.sound)
 									FlxG.play(rocketSND);
 								break;
 							case rifle:
-								if (Registry.sound.sound)	
+								if (Registry.options.sound)	
 									FlxG.play(rifleSND);
 								break;
 							default:
-								if (Registry.sound.sound)
+								if (Registry.options.sound)
 									FlxG.play(gunSND);
 						}
 					}
@@ -159,7 +159,7 @@ package player
 			}
 			
 			if (FlxG.keys.justPressed("SPACE"))
-				if (Registry.sound)
+				if (Registry.options.sound)
 					FlxG.play(jumpSND);
 		}
 		
@@ -183,7 +183,7 @@ package player
 		
 		override public function kill():void 
 		{
-			if (Registry.sound.sound)
+			if (Registry.options.sound)
 				FlxG.play(playerdeathSND);
 			super.kill();
 		}

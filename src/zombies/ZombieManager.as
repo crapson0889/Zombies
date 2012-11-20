@@ -65,7 +65,7 @@ package zombies
 			{
 				Registry.splatters.explode(zombie.x, zombie.y, new FlxPoint(bullet.x, bullet.y), new FlxPoint(Registry.player.sprite.x, Registry.player.sprite.y));
 				zombie.exists = false;
-				if (Registry.sound.sound)
+				if (Registry.options.sound)
 					FlxG.play(zdeathSND);
 			}
 			

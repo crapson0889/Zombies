@@ -34,7 +34,7 @@ package player
 			if (bullet is Bullet)
 			{
 				Registry.explosions.explode(bullet.x, bullet.y, new FlxPoint(bullet.x, bullet.y), new FlxPoint(Registry.player.sprite.x, Registry.player.sprite.y));
-				if (Registry.sound.sound)
+				if (Registry.options.sound)
 					FlxG.play(explosionSND);
 				
 				//Registry.logger.Log("rocketHit", "RocketHitsZombie", "none", "a rocket has hit a zombie");

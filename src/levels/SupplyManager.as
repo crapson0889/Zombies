@@ -42,7 +42,7 @@ package levels
 				Registry.score++;
 				supply.kill();
 				Registry.player.flashlight.batteryLife += 10;
-				if (Registry.sound.sound)
+				if (Registry.options.sound)
 					FlxG.play(supplySND);
 				newSupply();
 				Registry.player.newRandomWeapon();
