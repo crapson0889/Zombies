@@ -21,5 +21,21 @@ package
 		{
 			logging = !logging;
 		}
+		
+		public function soundString():String
+		{
+			if (sound)
+				return "On";
+			else
+				return "Off";
+		}
+		
+		public function loggingString():String
+		{
+			if (logging)
+				return "On";
+			else
+				return "Off";
+		}
 	}
 }

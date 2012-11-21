@@ -22,32 +22,32 @@ package
 		
 		public function Log(methodName:String, eventName:String, errorState:String, freeText:String) : void
 		{		
-			
-			try 
+			if (Registry.options.logging)
 			{
-				var aspURL:String = new String;
-				//aspURL = "http://ZombieGame.mscoder.com/ZombieLog/Create";
-				//aspURL = "http://localhost/MSCoder.Zombie.WebUI/ZombieLog/Create";
-				aspURL = "http://d12639668.u1129.c8.ixwebhosting.com/ZombieLog/Create";
-				var myXMLURL:URLRequest = new URLRequest(aspURL);
-				var variables:URLVariables = new URLVariables();
-				variables.MethodName = methodName;
-				variables.EventName = eventName;
-				variables.ErrorState = errorState;
-				variables.LogData = freeText;
-				
-				myXMLURL.data = variables;
-				myXMLURL.method = URLRequestMethod.POST;
-				var myLoader:URLLoader = new URLLoader();
-				myLoader.dataFormat = URLLoaderDataFormat.VARIABLES;
-				myLoader.load(myXMLURL);
-			} 
-			catch (err:Error) 
-			{
-				trace(err);
+				try 
+				{
+					var aspURL:String = new String;
+					//aspURL = "http://ZombieGame.mscoder.com/ZombieLog/Create";
+					//aspURL = "http://localhost/MSCoder.Zombie.WebUI/ZombieLog/Create";
+					aspURL = "http://d12639668.u1129.c8.ixwebhosting.com/ZombieLog/Create";
+					var myXMLURL:URLRequest = new URLRequest(aspURL);
+					var variables:URLVariables = new URLVariables();
+					variables.MethodName = methodName;
+					variables.EventName = eventName;
+					variables.ErrorState = errorState;
+					variables.LogData = freeText;
+					
+					myXMLURL.data = variables;
+					myXMLURL.method = URLRequestMethod.POST;
+					var myLoader:URLLoader = new URLLoader();
+					myLoader.dataFormat = URLLoaderDataFormat.VARIABLES;
+					myLoader.load(myXMLURL);
+				} 
+				catch (err:Error) 
+				{
+					trace(err);
+				}
 			}
-			
-			
 		}
 		
 		public function ErrorLog(methodName:String, eventName:String, errorState:String, freeText:String) : void

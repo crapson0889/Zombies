@@ -22,11 +22,21 @@ package zombies
 			exists = false;
 		}
 		
-		public function drop(bx:int, by:int, direction:int):void
+		public function drop(bx:int, by:int, direction:int, type:int):void
 		{
-			loadGraphic(zombiePNG, true, true, 16, 19, true);
-			addAnimation("walk", [0, 1, 2, 3, 4, 5], 10, true);
-			health = 15;
+			switch (type) 
+			{
+				case 0:
+					fastZombie();
+					break;
+				case 1:
+					normalZombie();
+					break;
+				case 2:
+					heavyZombie();
+					break;
+				default:
+			}
 			x = bx;
 			y = by;
 			velocity.x = direction * speed;
@@ -59,6 +69,30 @@ package zombies
 				facing = LEFT;
 			else
 				facing = RIGHT;
+		}
+		
+		private function fastZombie():void
+		{
+			//Loading different graphics would change the appearance of the Zombie. They need to be different for each type
+			speed = 50;
+			loadGraphic(zombiePNG, true, true, 16, 19, true);
+			addAnimation("walk", [0, 1, 2, 3, 4, 5], 20, true);
+			health = 5;
+		}
+		
+		private function normalZombie():void
+		{
+			loadGraphic(zombiePNG, true, true, 16, 19, true);
+			addAnimation("walk", [0, 1, 2, 3, 4, 5], 10, true);
+			health = 15;
+		}
+		
+		private function heavyZombie():void
+		{
+			speed = 10;
+			loadGraphic(zombiePNG, true, true, 16, 19, true);
+			addAnimation("walk", [0, 1, 2, 3, 4, 5], 5, true);
+			health = 50;
 		}
 	}
 

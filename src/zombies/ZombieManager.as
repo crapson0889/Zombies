@@ -50,7 +50,7 @@ package zombies
 					
 					default:
 				}
-				Zombie(getFirstAvailable()).drop(location, 0, currentDirection);
+				Zombie(getFirstAvailable()).drop(location, 0, currentDirection, Math.floor(Math.random()*3));
 			}
 			if(Registry.options.logging)
 				Registry.logger.Log("New Zombie", String(location), "None", "a new zombie has dropped");

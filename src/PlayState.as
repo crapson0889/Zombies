@@ -86,7 +86,7 @@ package
 			
 			//----*IMPORTANT*----
 			//The darkness is created before the light, but added after the light... Don't mess with it
-			//add(Registry.darkness);		//Commenting out this line will remove the darkness
+			add(Registry.darkness);		//Commenting out this line will remove the darkness
 			
 			//----*IMPORTANT*----
 			//Add anything after darkness that you dont want to get darkened
@@ -143,7 +143,7 @@ package
 		{
 			super.update();
 			
-			debug.text = "Score: " + Registry.score;
+			debug.text = "Score: " + Registry.options.logging;//Registry.score;
 			battery.text = "Battery: " + Registry.player.flashlight.batteryLife;
 			weapon.text = "Weapon: " + Registry.player.gun().name;
 			ammo.text = "Ammo: " + Registry.player.ammo;
@@ -181,6 +181,7 @@ package
 				Registry.darkness.fill(0xff000000);
 			else
 				Registry.darkness.fill(0xff777777);*/
+			//This is the fade in the darkness routine that happens at the beginning of the game
 			if (gameIsOver == false)
 			{
 				switch (introCount) 
@@ -233,10 +234,10 @@ package
 			super.draw();
 		}
 		
+		//This handles the fading in of the darkness for the game
 		public function darken(time:FlxTimer):void 
 		{
 			introCount++;
-			trace(introCount);
 		}
 		
 		//The current ending to the game. 

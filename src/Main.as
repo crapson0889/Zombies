@@ -10,8 +10,8 @@ package
 	public class Main extends FlxGame
 	{
 		public function Main()
-		{
-			super(400, 304, MenuState, 2, 60, 60);
+		{	
+			super(400, 304, MenuMainState, 2, 60, 60);
 			
 			forceDebugger = true;
 		}
