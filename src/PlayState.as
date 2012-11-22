@@ -19,10 +19,7 @@ package
 		[Embed(source = '../assets/cursor.png')] private var cursorPNG:Class;
 		
 		//Simple text overlay... Will be replaced by a traditional GUI overlay later on
-		private var debug:FlxText;
-		private var battery:FlxText;
-		private var weapon:FlxText;
-		private var ammo:FlxText;
+		private var userInterface:UserInterface;
 		//public var soundButton:FlxButton;
 		//public var soundOn:FlxText = new FlxText(20, 0, 400, "Sound: On");
 		//public var soundOff:FlxText = new FlxText(20, 0, 400, "Sound: Off");
@@ -90,14 +87,8 @@ package
 			
 			//----*IMPORTANT*----
 			//Add anything after darkness that you dont want to get darkened
-			debug = new FlxText(0, 0, 200, "");
-			add(debug);
-			battery = new FlxText(0, 16, 200, "");
-			add(battery);
-			weapon = new FlxText(0, 32, 200, "");
-			add(weapon);
-			ammo = new FlxText(0, 48, 200, "");
-			add(ammo);
+			userInterface = new UserInterface;
+			add(userInterface);
 			
 			//This is no longer needed... The issue with the sound not being able to be toggled in the MenuState has been fixed
 			/*
@@ -112,12 +103,16 @@ package
 			introTimer = new FlxTimer();
 			introTimer.start(0.25, 13, darken);
 			introCount = 0;
+			
+			//Logging is not checked for this so that we can see if anyone tried our game
+			Registry.logger.Log("Game Started", "Logging: "+Registry.options.loggingString, "Sound: "+Registry.options.soundString, "Player has started a game!");
 		}
 		
 		public function createEverythingElse():void 
 		{
 			Registry.player.exists = true;
-			Registry.player.flashlight.batteryLife = 10;
+			Registry.player.flashlight.batteryLife = 12;
+			userInterface.create();
 		}
 		
 		//This is no longer needed... The issue with the sound not being able to be toggled in the MenuState has been fixed
@@ -142,11 +137,6 @@ package
 		override public function update():void
 		{
 			super.update();
-			
-			debug.text = "Score: " + Registry.options.logging;//Registry.score;
-			battery.text = "Battery: " + Registry.player.flashlight.batteryLife;
-			weapon.text = "Weapon: " + Registry.player.gun().name;
-			ammo.text = "Ammo: " + Registry.player.ammo;
 			
 			//Collisions with the map
 			FlxG.collide(Registry.player.sprite, Registry.level1.midground);
@@ -244,7 +234,7 @@ package
 		private function gameOver(player:FlxObject, zombie:FlxObject):void 
 		{
 			if(Registry.options.logging)
-				Registry.logger.Log("Player killed", "Game Over", "None", "player has been killed by a zombie");
+				Registry.logger.Log("Player killed", "Game Over", "None", "Player has been killed by a zombie. Score: "+Registry.score);
 			Registry.splatters.playerDeath(Registry.player.sprite.x, Registry.player.sprite.y);
 			Registry.player.kill();
 			gameIsOver = true;

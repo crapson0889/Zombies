@@ -17,9 +17,10 @@ package
 			quitButton = new FlxButton(FlxG.width / 2 - 40, FlxG.height / 2 + 20, "Quit", quitGame);
 			add(quitButton);
 			
-			gameOverText = new FlxText(FlxG.width / 2 - 80, FlxG.height / 2 - 40, 160, "Game Over", true);
+			gameOverText = new FlxText(FlxG.width / 2 - 80, FlxG.height / 2 - 60, 160, "Game Over\nScore: "+Registry.score, true);
 			gameOverText.alignment = "center";
-			gameOverText.size = 20;
+			gameOverText.size = 16;
+			gameOverText.shadow = 0xff333333;
 			add(gameOverText);
 		}
 		

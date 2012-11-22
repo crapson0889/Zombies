@@ -17,7 +17,7 @@ package fx
 			//Decrements the battery life
 			batteryTimer = new FlxTimer();
 			batteryTimer.start(1, 0, batteryDecrement);
-			batteryLife = 10;
+			batteryLife = 12;
 		}
 		
 		override public function update():void {
@@ -37,9 +37,9 @@ package fx
 			
 			angle = FlxU.getAngle(new FlxPoint(Registry.player.sprite.x, Registry.player.sprite.y) , new FlxPoint(FlxG.mouse.x, FlxG.mouse.y)) + 225;
 			
-			if (batteryLife > 10)
+			if (batteryLife > 12)
 			{
-				batteryLife = 10;
+				batteryLife = 12;
 			}
 			
 			//Old code for turning the flashlight. Might come back to limiting the rotation to just one side depending on which way the character is facing.

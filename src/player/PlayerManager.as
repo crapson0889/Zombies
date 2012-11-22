@@ -27,6 +27,9 @@ package player
 		public var ammo:int;
 		
 		public var gunSprite:GunSprite;
+		public var rocketLauncherSprite:RocketLauncherSprite;
+		public var uziSprite:UziSprite;
+		public var rifleSprite:RifleSprite;
 		
 		public var currentGun:int;
 		
@@ -53,6 +56,18 @@ package player
 			
 			gunSprite = new GunSprite(sprite.x, sprite.y);
 			add(gunSprite);
+			
+			rocketLauncherSprite = new RocketLauncherSprite(sprite.x, sprite.y);
+			add(rocketLauncherSprite);
+			rocketLauncherSprite.exists = false;
+			
+			uziSprite = new UziSprite(sprite.x, sprite.y);
+			add(uziSprite);
+			uziSprite.exists = false;
+			
+			rifleSprite = new RifleSprite(sprite.x, sprite.y);
+			add(rifleSprite);
+			rifleSprite.exists = false;
 			
 			add(sprite);
 			
@@ -190,7 +205,32 @@ package player
 		
 		public function newRandomWeapon():void
 		{
+			gunSprite.exists = false;
+			rocketLauncherSprite.exists = false;
+			uziSprite.exists = false;
+			rifleSprite.exists = false;
+			
 			currentGun = Math.floor(Math.random() * 3) + 2;
+			
+			switch (currentGun) 
+			{
+				case 1:
+					gunSprite.exists = true;
+					break;
+				case 2:
+					rocketLauncherSprite.exists = true;
+					break;
+				case 3:
+					uziSprite.exists = true;
+					break;
+				case 4:
+					rifleSprite.exists = true;
+					break;
+				default:
+					gunSprite.exists = true;
+					break;
+			}
+			
 			ammo = gun().ammo;
 		}
 		

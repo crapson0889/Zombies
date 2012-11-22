@@ -41,7 +41,7 @@ package levels
 			{
 				Registry.score++;
 				supply.kill();
-				Registry.player.flashlight.batteryLife += 10;
+				Registry.player.flashlight.batteryLife += 12;
 				if (Registry.options.sound)
 					FlxG.play(supplySND);
 				newSupply();

@@ -44,6 +44,11 @@ package
 			"Credits: \nChristopher Rapson\nPhillip Rose\nSteven Harris\nMike Zanchi\nJesse Garrett");
 			instructions.shadow = 0xff333333;
 			add(instructions);
+			
+			var version:FlxText = new FlxText(50, FlxG.height - 30, 300, "Ver 0.17a");
+			version.shadow = 0xff333333;
+			version.alignment = "right";
+			add(version);
 		}
 		
 		override public function draw():void {
