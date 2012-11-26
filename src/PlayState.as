@@ -74,8 +74,11 @@ package
 			add(Registry.player);
 			
 			//Supply manager handles adding supplies and checking collisions
-			Registry.supplyManager = new SupplyManager;
-			add(Registry.supplyManager);
+			Registry.supplies = new SupplyManager;
+			add(Registry.supplies);
+			
+			Registry.utilities = new UtilityManager;
+			add(Registry.utilities);
 			
 			//Spits out the zombies
 			zombieTimer = new FlxTimer();
@@ -143,12 +146,13 @@ package
 			FlxG.collide(Registry.zombies, Registry.level1.midground);
 			FlxG.collide(Registry.splatters, Registry.level1.midground);
 			FlxG.collide(Registry.explosions, Registry.level1.midground);
+			FlxG.collide(Registry.utilities, Registry.level1.midground);
 			
 			FlxG.collide(Registry.player.pistol.group, Registry.level1.midground, Registry.player.pistol.bulletHit);
 			FlxG.collide(Registry.player.rocket.group, Registry.level1.midground, Registry.player.rocket.bulletHit);
 			FlxG.collide(Registry.player.uzi.group, Registry.level1.midground, Registry.player.uzi.bulletHit);
 			FlxG.collide(Registry.player.rifle.group, Registry.level1.midground, Registry.player.rifle.bulletHit);
-
+			
 			//If bullet hits zombie call function
 			FlxG.overlap(Registry.player.pistol.group, Registry.zombies, Registry.player.pistol.bulletHit);
 			FlxG.overlap(Registry.player.rocket.group, Registry.zombies, Registry.player.rocket.bulletHit);

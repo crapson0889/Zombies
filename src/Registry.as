@@ -17,6 +17,7 @@ package
 	import fx.ExplosionManager;
 	import org.flixel.*;
 	import player.PlayerManager;
+	import player.UtilityManager;
 	import zombies.ZombieManager;
 	import fx.SplatterManager;
 	import levels.*;
@@ -28,7 +29,8 @@ package
 		public static var splatters:SplatterManager;
 		public static var level1:Level1;
 		public static var supplyLocations:FlxTilemap;
-		public static var supplyManager:SupplyManager;
+		public static var supplies:SupplyManager;
+		public static var utilities:UtilityManager;
 		public static var score:uint;
 		public static var darkness:Darkness;
 		public static var explosions:ExplosionManager;
@@ -50,7 +52,8 @@ package
 			splatters = null;
 			level1 = null;
 			supplyLocations = null;
-			supplyManager = null;
+			supplies = null;
+			utilities = null;
 			darkness = null;
 			score = 0;
 		}

@@ -1,5 +1,8 @@
 package  
 {
+	/*
+	 * This is the class that handles the informaiton panel in the menu
+	 * */
 	import fx.Darkness;
 	import org.flixel.FlxButton;
 	import org.flixel.FlxText;
@@ -23,7 +26,7 @@ package
 			
 			Registry.darkness = new Darkness;
 			
-			var background:FlxTilemap = new FlxTilemap;
+			var background:FlxTilemap = new FlxTilemap; //The tilemap is added just for the background of the menu
 			background.loadMap(new backgroundCSV, tileset, 16, 16, 0, 0, 1, 31);
 			add(background);
 			
