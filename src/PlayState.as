@@ -104,7 +104,7 @@ package
 			Registry.player.exists = false;
 			
 			introTimer = new FlxTimer();
-			introTimer.start(0.25, 13, darken);
+			introTimer.start(0.1, 13, darken);
 			introCount = 0;
 			
 			//Logging is not checked for this so that we can see if anyone tried our game

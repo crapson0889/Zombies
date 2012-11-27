@@ -9,7 +9,7 @@ package
 		
 		public function OptionManager() {
 			sound = true;
-			logging = false;
+			logging = true;
 		}
 		
 		public function soundSwitch():void

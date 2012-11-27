@@ -166,12 +166,12 @@ package player
 			//This section needs will be replaced by a function that selects a weapon at random when a supply package has a weapon
 			//		It will be removed when that is added
 			//		New function will need to handle the gunSprite as well
-			if (FlxG.keys.justPressed("H"))
+			/*if (FlxG.keys.justPressed("H"))
 			{
 				if (currentGun == 4)
 					currentGun = 0;
 				currentGun++;
-			}
+			}*/
 			
 			if (FlxG.keys.justPressed("SPACE"))
 				if (Registry.options.sound)

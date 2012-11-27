@@ -1,10 +1,12 @@
 package player 
 {
+	import fx.Light;
 	import org.flixel.FlxGroup;
 	import org.flixel.FlxG;
 	
 	public class UtilityManager extends FlxGroup
 	{
+		public var utilityLight:FlxGroup;
 		
 		public function UtilityManager() 
 		{
@@ -28,10 +30,10 @@ package player
 		{
 			super.update();
 			
-			if (FlxG.keys.justPressed("W"))
+			/*if (FlxG.keys.justPressed("W"))
 			{
 				drop();
-			}
+			}*/
 		}
 		
 	}
