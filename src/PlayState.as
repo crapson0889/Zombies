@@ -108,7 +108,7 @@ package
 			introCount = 0;
 			
 			//Logging is not checked for this so that we can see if anyone tried our game
-			Registry.logger.Log("Game Started", "Logging: "+Registry.options.loggingString, "Sound: "+Registry.options.soundString, "Player has started a game!");
+			Registry.logger.Log("Game Started", "Logging: "+Registry.options.loggingString(), "Sound: "+Registry.options.soundString(), "Player has started a game!");
 		}
 		
 		public function createEverythingElse():void 

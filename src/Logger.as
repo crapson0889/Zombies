@@ -40,7 +40,7 @@ package
 					myXMLURL.data = variables;
 					myXMLURL.method = URLRequestMethod.POST;
 					var myLoader:URLLoader = new URLLoader();
-					myLoader.dataFormat = URLLoaderDataFormat.VARIABLES;
+					myLoader.dataFormat = URLLoaderDataFormat.TEXT;
 					myLoader.load(myXMLURL);
 				} 
 				catch (err:Error) 
@@ -52,22 +52,31 @@ package
 		
 		public function ErrorLog(methodName:String, eventName:String, errorState:String, freeText:String) : void
 		{
-			var aspURL:String = new String;
-			//aspURL = "http://ZombieGame.mscoder.com/ZombieLog/Create";
-			//aspURL = "http://localhost/MSCoder.Zombie.WebUI/ZombieLog/Create";
-			aspURL = "http://d12639668.u1129.c8.ixwebhosting.com/ZombieErrorLog/Create";
-			var myXMLURL:URLRequest = new URLRequest(aspURL);
-			var variables:URLVariables = new URLVariables();
-			variables.MethodName = methodName;
-			variables.EventName = eventName;
-			variables.ErrorState = errorState;
-			variables.ErrorData = freeText;
-			
-			myXMLURL.data = variables;
-			myXMLURL.method = URLRequestMethod.POST;
-			var myLoader:URLLoader = new URLLoader();
-			myLoader.dataFormat = URLLoaderDataFormat.VARIABLES;
-			myLoader.load(myXMLURL);	
+			if (Registry.options.logging)
+			{
+				try{
+					var aspURL:String = new String;
+					//aspURL = "http://ZombieGame.mscoder.com/ZombieLog/Create";
+					//aspURL = "http://localhost/MSCoder.Zombie.WebUI/ZombieLog/Create";
+					aspURL = "http://d12639668.u1129.c8.ixwebhosting.com/ZombieErrorLog/Create";
+					var myXMLURL:URLRequest = new URLRequest(aspURL);
+					var variables:URLVariables = new URLVariables();
+					variables.MethodName = methodName;
+					variables.EventName = eventName;
+					variables.ErrorState = errorState;
+					variables.ErrorData = freeText;
+					
+					myXMLURL.data = variables;
+					myXMLURL.method = URLRequestMethod.POST;
+					var myLoader:URLLoader = new URLLoader();
+					myLoader.dataFormat = URLLoaderDataFormat.TEXT;
+					myLoader.load(myXMLURL);	
+				}
+				catch (err:Error)
+				{
+					trace(err);
+				}
+			}
 		}
 	}
 	
