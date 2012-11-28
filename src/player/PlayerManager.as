@@ -161,6 +161,12 @@ package player
 			{
 				ammo = 0;
 				currentGun = 1;
+				
+				rocketLauncherSprite.exists = false;
+				uziSprite.exists = false;
+				rifleSprite.exists = false;
+				
+				gunSprite.exists = true;
 			}
 			
 			//This section needs will be replaced by a function that selects a weapon at random when a supply package has a weapon

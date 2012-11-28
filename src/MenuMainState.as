@@ -31,23 +31,26 @@ package
 			
 			Registry.options = new OptionManager;
 			
-			var title:FlxText = new FlxText(0, 50, 400, "Zombie Game!");
+			var title:FlxText = new FlxText(0, 50, 400, "Zombies In The Shadows");
 			title.alignment = "center";
 			title.shadow = 0xff333333;
 			title.size = 24;
 			add(title);
 			
-			var startButton:FlxButton = new FlxButton(100, 100, "Start Game", startGame);
+			var startButton:FlxButton = new FlxButton(100, 160, "Start Game", startGame);
 			startButton.x = FlxG.width / 2 - startButton.width / 2;
 			add(startButton);
 			
-			var optionsButton:FlxButton = new FlxButton(100, 130, "Options", switchToOptionsState);
+			var optionsButton:FlxButton = new FlxButton(100, 190, "Options", switchToOptionsState);
 			optionsButton.x = FlxG.width / 2 - optionsButton.width / 2;
 			add(optionsButton);
 			
-			var infoButton:FlxButton = new FlxButton(100, 160, "Information", switchToInfoState);
+			var infoButton:FlxButton = new FlxButton(100, 220, "Information", switchToInfoState);
 			infoButton.x = FlxG.width / 2 - infoButton.width / 2;
 			add(infoButton);
+			
+			if(Registry.options.logging)
+				FlxG.debug = true;
 			
 			FlxG.mouse.show();
 		}

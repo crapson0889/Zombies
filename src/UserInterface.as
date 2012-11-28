@@ -7,20 +7,30 @@ package
 	public class UserInterface extends FlxGroup
 	{
 		[Embed(source = '../assets/battery.png')] private var batteryPNG:Class;
+		[Embed(source = '../assets/pistol@2x.png')] private var pistolPNG:Class;
+		[Embed(source = '../assets/rocket@2x.png')] private var rocketPNG:Class;
+		[Embed(source = '../assets/uzi@2x.png')] private var uziPNG:Class;
+		[Embed(source = '../assets/rifle@2x.png')] private var riflePNG:Class;
 		
-		public var debug:FlxText;
+		public var score:FlxText;
 		//public var batteryText:FlxText;
 		public var battery:FlxSprite;
 		public var weapon:FlxText;
 		public var ammo:FlxText;
 		private var created:Boolean = false;
 		
+		public var pistol:FlxSprite;
+		public var rocket:FlxSprite;
+		public var uzi:FlxSprite;
+		public var rifle:FlxSprite;
+		
 		public function UserInterface() 
 		{
 			super();
 			
-			debug = new FlxText(0, 0, 200, "");
-			add(debug);
+			score = new FlxText(8, 8, 200, "");
+			score.size = 16;
+			add(score);
 			
 			//batteryText = new FlxText(0, 16, 200, "");
 			//add(batteryText);
@@ -34,11 +44,30 @@ package
 			
 			weapon = new FlxText(0, 280, 400, "");
 			weapon.alignment = "right";
-			add(weapon);
+			//add(weapon);
 			
-			ammo = new FlxText(0, 290, 400, "");
-			ammo.alignment = "right";
+			ammo = new FlxText(56, 288, 400, "");
+			//ammo.alignment = "right";
 			add(ammo);
+			
+			pistol = new FlxSprite(14, 254);
+			pistol.loadGraphic(pistolPNG, true, false, 40, 40);
+			add(pistol);
+			
+			rocket = new FlxSprite(14, 254);
+			rocket.loadGraphic(rocketPNG, true, false, 40, 40);
+			rocket.exists = false;
+			add(rocket);
+			
+			uzi = new FlxSprite(14, 254);
+			uzi.loadGraphic(uziPNG, true, false, 40, 40);
+			uzi.exists = false;
+			add(uzi);
+			
+			rifle = new FlxSprite(14, 254);
+			rifle.loadGraphic(riflePNG, true, false, 40, 40);
+			rifle.exists = false;
+			add(rifle);
 		}
 		
 		public function create():void 
@@ -61,10 +90,37 @@ package
 				battery.play("drain");
 			}
 			
-			debug.text = "Score: " + Registry.score;
+			score.text = "Score: " + Registry.score;
 			//batteryText.text = "Battery: " + Registry.player.flashlight.batteryLife;
 			weapon.text = "Weapon: " + Registry.player.gun().name;
-			ammo.text = "Ammo: " + Registry.player.ammo;
+			if(Registry.player.ammo != 0)
+				ammo.text = String(Registry.player.ammo);
+			else
+				ammo.text = "";
+			
+			pistol.exists = false;
+			rocket.exists = false;
+			uzi.exists = false;
+			rifle.exists = false;
+			
+			switch (Registry.player.currentGun) 
+			{
+				case 1:
+					pistol.exists = true;
+					break;
+				case 2:
+					rocket.exists = true;
+					break;
+				case 3:
+					uzi.exists = true;
+					break;
+				case 4:
+					rifle.exists = true;
+					break;
+				default:
+					pistol.exists = true;
+					break;
+			}
 		}
 		
 	}

@@ -90,8 +90,6 @@ package
 			
 			//----*IMPORTANT*----
 			//Add anything after darkness that you dont want to get darkened
-			userInterface = new UserInterface;
-			add(userInterface);
 			
 			//This is no longer needed... The issue with the sound not being able to be toggled in the MenuState has been fixed
 			/*
@@ -115,6 +113,12 @@ package
 		{
 			Registry.player.exists = true;
 			Registry.player.flashlight.batteryLife = 12;
+			
+			userInterface = new UserInterface;
+			add(userInterface);
+			
+			FlxG.log("Game Started");
+			
 			userInterface.create();
 		}
 		
@@ -214,7 +218,8 @@ package
 						Registry.darkness.fill(0xff000000);
 						break;
 					case 12:
-						createEverythingElse();
+						if(Registry.player.exists == false)
+							createEverythingElse();
 						Registry.darkness.fill(0xff000000);
 						break;
 					case 13:
