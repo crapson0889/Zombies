@@ -31,7 +31,7 @@ package
 			
 			Registry.options = new OptionManager;
 			
-			var title:FlxText = new FlxText(0, 50, 400, "Zombies In The Shadows");
+			var title:FlxText = new FlxText(0, 50, 400, "Zombies' Descent");
 			title.alignment = "center";
 			title.shadow = 0xff333333;
 			title.size = 24;
