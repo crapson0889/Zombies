@@ -84,7 +84,7 @@ package player
 			FlxControl.player1.setWASDControl(false, false, true, true);
 			
 			//	And SPACE BAR will make them jump up to a maximum of 200 pixels (per second), only when touching the FLOOR
-			FlxControl.player1.setJumpButton("SPACE", FlxControlHandler.KEYMODE_PRESSED, 200, FlxObject.FLOOR, 250, 200);
+			FlxControl.player1.setJumpButton("W", FlxControlHandler.KEYMODE_PRESSED, 200, FlxObject.FLOOR, 250, 200);
 			
 			//	Because we are using the MOVEMENT_ACCELERATES type the first value is the acceleration speed of the sprite
 			//	Think of it as the time it takes to reach maximum velocity. A value of 100 means it would take 1 second. A value of 400 means it would take 0.25 of a second.
@@ -179,7 +179,7 @@ package player
 				currentGun++;
 			}*/
 			
-			if (FlxG.keys.justPressed("SPACE"))
+			if (FlxG.keys.justPressed("W"))
 				if (Registry.options.sound)
 					FlxG.play(jumpSND);
 		}

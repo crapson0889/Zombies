@@ -80,7 +80,7 @@ package zombies
 		
 		private function fastZombie():void
 		{
-			FlxG.log("Fast Zombie Dropped");
+			//FlxG.log("Fast Zombie Dropped");
 			//Loading different graphics would change the appearance of the Zombie. They need to be different for each type
 			speed = 50;
 			loadGraphic(zombieFastPNG, true, true, 16, 19, true);
@@ -92,7 +92,7 @@ package zombies
 		
 		private function normalZombie():void
 		{
-			FlxG.log("Normal Zombie Dropped");
+			//FlxG.log("Normal Zombie Dropped");
 			speed = 25;
 			loadGraphic(zombiePNG, true, true, 16, 19, true);
 			addAnimation("walkFast", [0, 1, 2, 3, 4, 5], 20, true);
@@ -103,7 +103,7 @@ package zombies
 		
 		private function heavyZombie():void
 		{
-			FlxG.log("Heavy Zombie Dropped");
+			//FlxG.log("Heavy Zombie Dropped");
 			speed = 10;
 			loadGraphic(zombieHeavyPNG, true, true, 16, 19, true);
 			addAnimation("walkFast", [0, 1, 2, 3, 4, 5], 20, true);

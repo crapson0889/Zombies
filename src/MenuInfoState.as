@@ -42,13 +42,13 @@ package
 			add(title);
 			
 			var instructions:FlxText = new FlxText(50, 50, 300, "Navigate the map to collect glowing supplies and increase your score. Watch out for Zombies! You only have a limited amount of time before the battery on your flashlight runs out.\n\n" + 
-			"'A' and 'D' to move left/right \n" + "Spacebar to Jump! \n" + "Mouse Click to shoot!\n\n" + 
+			"'A' and 'D' to move left/right \n" + "W to Jump! \n" + "Mouse Click to shoot!\n\n" + 
 			"This game was created for a class project for CECS 550 at Speed School or University of Louisville\n\n" + 
 			"Credits: \nChristopher Rapson\nPhillip Rose\nSteven Harris\nMike Zanchi\nJesse Garrett");
 			instructions.shadow = 0xff333333;
 			add(instructions);
 			
-			var version:FlxText = new FlxText(50, FlxG.height - 30, 300, "Ver 0.19");
+			var version:FlxText = new FlxText(50, FlxG.height - 30, 300, "Ver 0.20a");
 			version.shadow = 0xff333333;
 			version.alignment = "right";
 			add(version);

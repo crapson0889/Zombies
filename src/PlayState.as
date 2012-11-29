@@ -13,6 +13,7 @@ package
 	import zombies.*;
 	import levels.*;
 	import Logger;
+	import org.flixel.plugin.photonstorm.API.FlxKongregate;
 	
 	public class PlayState extends FlxState
 	{	
@@ -42,6 +43,8 @@ package
 		override public function create():void
 		{
 			super.create();
+			
+			FlxKongregate.init(apiHasLoaded);
 			
 			FlxG.mouse.load(cursorPNG, 1, 8, 8);
 			
@@ -239,9 +242,18 @@ package
 			introCount++;
 		}
 		
+				
+		private function apiHasLoaded():void 
+		{
+			FlxKongregate.connect();
+			FlxG.log("connected to Kongregate");
+			FlxG.log(FlxKongregate.isLocal);
+		}
+		
 		//The current ending to the game. 
 		private function gameOver(player:FlxObject, zombie:FlxObject):void 
 		{
+			FlxKongregate.submitStats("score", Registry.score);
 			if(Registry.options.logging)
 				Registry.logger.Log("Player killed", "Game Over", "None", "Player has been killed by a zombie. Score: "+Registry.score);
 			Registry.splatters.playerDeath(Registry.player.sprite.x, Registry.player.sprite.y);
