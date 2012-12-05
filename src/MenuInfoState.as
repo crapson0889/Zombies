@@ -48,7 +48,7 @@ package
 			instructions.shadow = 0xff333333;
 			add(instructions);
 			
-			var version:FlxText = new FlxText(50, FlxG.height - 30, 300, "Ver 0.20a");
+			var version:FlxText = new FlxText(50, FlxG.height - 30, 300, "Ver 0.21");
 			version.shadow = 0xff333333;
 			version.alignment = "right";
 			add(version);

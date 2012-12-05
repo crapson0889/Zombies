@@ -63,9 +63,9 @@ package
 		
 		private function startGame():void
         {
-			var gameState:PlayState = new PlayState();
+			var introState:MenuIntroState = new MenuIntroState();
 			
-            FlxG.switchState(gameState);
+            FlxG.switchState(introState);
         }
 		
 		private function switchToOptionsState():void 

@@ -34,6 +34,8 @@ package
 		//Used to lighten the darkness at the end of the game
 		private var gameIsOver:Boolean = false;
 		
+		private var survive:FlxText;
+		
 		public function PlayState() 
 		{
 			super();
@@ -91,6 +93,12 @@ package
 			//The darkness is created before the light, but added after the light... Don't mess with it
 			add(Registry.darkness);		//Commenting out this line will remove the darkness
 			
+			survive = new FlxText(0, 0, FlxG.width, "Survive!");
+			survive.size = 32;
+			survive.y = FlxG.height / 2 - survive.height / 2;
+			survive.alignment = "center";
+			add(survive);
+			
 			//----*IMPORTANT*----
 			//Add anything after darkness that you dont want to get darkened
 			
@@ -121,6 +129,8 @@ package
 			add(userInterface);
 			
 			FlxG.log("Game Started");
+			
+			survive.exists = false;
 			
 			userInterface.create();
 		}

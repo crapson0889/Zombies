@@ -11,6 +11,7 @@ package
 		[Embed(source = '../assets/rocket@2x.png')] private var rocketPNG:Class;
 		[Embed(source = '../assets/uzi@2x.png')] private var uziPNG:Class;
 		[Embed(source = '../assets/rifle@2x.png')] private var riflePNG:Class;
+		[Embed(source = '../assets/infinity.png')] private var infinityPNG:Class;
 		
 		public var score:FlxText;
 		//public var batteryText:FlxText;
@@ -23,6 +24,8 @@ package
 		public var rocket:FlxSprite;
 		public var uzi:FlxSprite;
 		public var rifle:FlxSprite;
+		
+		public var infinity:FlxSprite;
 		
 		public function UserInterface() 
 		{
@@ -68,6 +71,11 @@ package
 			rifle.loadGraphic(riflePNG, true, false, 40, 40);
 			rifle.exists = false;
 			add(rifle);
+			
+			infinity = new FlxSprite(58, 292);
+			infinity.loadGraphic(infinityPNG, true, false, 12, 6);
+			infinity.exists = true;
+			add(infinity);
 		}
 		
 		public function create():void 
@@ -93,10 +101,16 @@ package
 			score.text = "Score: " + Registry.score;
 			//batteryText.text = "Battery: " + Registry.player.flashlight.batteryLife;
 			weapon.text = "Weapon: " + Registry.player.gun().name;
-			if(Registry.player.ammo != 0)
+			if (Registry.player.ammo != 0)
+			{
 				ammo.text = String(Registry.player.ammo);
+				infinity.exists = false;
+			}
 			else
+			{
 				ammo.text = "";
+				infinity.exists = true;
+			}
 			
 			pistol.exists = false;
 			rocket.exists = false;
