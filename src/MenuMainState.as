@@ -11,6 +11,7 @@ package
 	{
 		[Embed(source = "../assets/menu_background.csv", mimeType = "application/octet-stream")] public var backgroundCSV:Class;
 		[Embed(source = "../assets/terrain.png")] public var tileset:Class;
+		[Embed(source = "../assets/sounds/ZombiesTitle.mp3")] public var MusicMode:Class;
 		
 		public function MenuMainState()
 		{	
@@ -20,6 +21,14 @@ package
 		override public function create():void 
 		{
 			super.create();
+			
+			if (!Registry.musicIsOn)
+			{
+				FlxG.playMusic(MusicMode);
+				Registry.musicIsOn = true;
+			}
+			//FlxG.music = MusicMode;
+			
 			
 			Registry.darkness = new Darkness;
 			

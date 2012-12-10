@@ -5,8 +5,10 @@ package levels
 	
 	public class SupplyManager extends FlxGroup
 	{
-		[Embed(source = "dungeon/mapCSV_Group1_Supplies.csv", mimeType = "application/octet-stream")] public var supplyCSV:Class;
-		[Embed(source = "dungeon/terrain.png")] public var tileset:Class;
+		//[Embed(source = "dungeon/mapCSV_Group1_Supplies.csv", mimeType = "application/octet-stream")] public var supplyCSV:Class;
+		//[Embed(source = "dungeon/terrain.png")] public var tileset:Class;
+		[Embed(source = "ZombiesLevel/mapCSV_Group1_Supplies.csv", mimeType = "application/octet-stream")] public var supplyCSV:Class;
+		[Embed(source = "ZombiesLevel/tileset.png")] public var tileset:Class;
 		[Embed(source = "../../assets/supplyLight.png")] private var SupplyLightImageClass:Class;
 		[Embed(source = "../../assets/sounds/supply.mp3")] private var supplySND:Class;
 		
@@ -54,8 +56,8 @@ package levels
 		
 		private function newSupply():void 
 		{
-			var rand:uint = Math.floor(Math.random() * Registry.supplyLocations.getTileInstances(24).push());
-			var supplyLocation:FlxPoint = Registry.supplyLocations.getTileCoords(24)[rand];
+			var rand:uint = Math.floor(Math.random() * Registry.supplyLocations.getTileInstances(30).push());
+			var supplyLocation:FlxPoint = Registry.supplyLocations.getTileCoords(30)[rand];
 			supply = new Supply(supplyLocation.x-8, supplyLocation.y-8);
 			add(supply);
 		}

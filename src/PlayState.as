@@ -18,6 +18,7 @@ package
 	public class PlayState extends FlxState
 	{	
 		[Embed(source = '../assets/cursor.png')] private var cursorPNG:Class;
+		[Embed(source = "../assets/sounds/ZombiesGameLoop.mp3")] public var MusicMode:Class;
 		
 		//Simple text overlay... Will be replaced by a traditional GUI overlay later on
 		private var userInterface:UserInterface;
@@ -45,7 +46,8 @@ package
 		override public function create():void
 		{
 			super.create();
-			
+			Registry.musicIsOn = false;
+			FlxG.playMusic(MusicMode);
 			FlxKongregate.init(apiHasLoaded);
 			
 			FlxG.mouse.load(cursorPNG, 1, 8, 8);

@@ -6,10 +6,14 @@ package levels
 	
 	public class Level1 extends FlxGroup
 	{
-		[Embed(source = "dungeon/mapCSV_Group1_Background.csv", mimeType = "application/octet-stream")] public var backgroundCSV:Class;
-		[Embed(source = "dungeon/mapCSV_Group1_Midground.csv", mimeType = "application/octet-stream")] public var midgroundCSV:Class;
-		[Embed(source = "dungeon/mapCSV_Group1_Foreground.csv", mimeType = "application/octet-stream")] public var foregroundCSV:Class;
-		[Embed(source = "dungeon/terrain.png")] public var tileset:Class;
+		//[Embed(source = "dungeon/mapCSV_Group1_Background.csv", mimeType = "application/octet-stream")] public var backgroundCSV:Class;
+		//[Embed(source = "dungeon/mapCSV_Group1_Midground.csv", mimeType = "application/octet-stream")] public var midgroundCSV:Class;
+		//[Embed(source = "dungeon/mapCSV_Group1_Foreground.csv", mimeType = "application/octet-stream")] public var foregroundCSV:Class;
+		//[Embed(source = "dungeon/terrain.png")] public var tileset:Class;
+		[Embed(source = "ZombiesLevel/mapCSV_Group1_Background.csv", mimeType = "application/octet-stream")] public var backgroundCSV:Class;
+		[Embed(source = "ZombiesLevel/mapCSV_Group1_Midground.csv", mimeType = "application/octet-stream")] public var midgroundCSV:Class;
+		[Embed(source = "ZombiesLevel/mapCSV_Group1_Foreground.csv", mimeType = "application/octet-stream")] public var foregroundCSV:Class;
+		[Embed(source = "ZombiesLevel/tileset.png")] public var tileset:Class;
 		[Embed(source = "/../assets/portalLight.png")] private var PortalLightImageClass:Class;
 		[Embed(source = "/../assets/portalLightLarge.png")] private var PortalLightLargeImageClass:Class;
 		

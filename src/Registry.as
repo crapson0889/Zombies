@@ -35,6 +35,7 @@ package
 		public static var darkness:Darkness;
 		public static var explosions:ExplosionManager;
 		public static var logger:Logger;
+		public static var musicIsOn:Boolean = false;
 		
 		//Opitons. Set in the options menu
 		public static var options:OptionManager;

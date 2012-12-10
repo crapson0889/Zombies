@@ -7,10 +7,13 @@ package
 		private static var restartButton:FlxButton;
 		private static var quitButton:FlxButton;
 		private var gameOverText:FlxText;
+		[Embed(source = "../assets/sounds/ZombiesGameOver.mp3")] public var MusicMode:Class;
 		
 		public function GameOverMenu() 
 		{
 			FlxG.mouse.load();
+			FlxG.music.stop();
+			FlxG.play(MusicMode);
 			restartButton = new FlxButton(FlxG.width/2 - 40, FlxG.height/2 - 10, "Restart", restartGame);
 			add(restartButton);
 			
