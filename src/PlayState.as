@@ -46,8 +46,11 @@ package
 		override public function create():void
 		{
 			super.create();
+			
 			Registry.musicIsOn = false;
-			FlxG.playMusic(MusicMode);
+			if(Registry.options.sound)
+				FlxG.playMusic(MusicMode);
+			
 			FlxKongregate.init(apiHasLoaded);
 			
 			FlxG.mouse.load(cursorPNG, 1, 8, 8);

@@ -22,9 +22,13 @@ package
 		{
 			super.create();
 			
+			if(Registry.options == null)
+				Registry.options = new OptionManager;
+			
 			if (!Registry.musicIsOn)
 			{
-				FlxG.playMusic(MusicMode);
+				if(Registry.options.sound)
+					FlxG.playMusic(MusicMode);
 				Registry.musicIsOn = true;
 			}
 			//FlxG.music = MusicMode;
@@ -37,8 +41,6 @@ package
 			add(background);
 			
 			add(Registry.darkness); //Added the darkness. I think we can get some cool torch effect going at the beginning of the game.
-			
-			Registry.options = new OptionManager;
 			
 			var title:FlxText = new FlxText(0, 50, 400, "Zombies' Descent");
 			title.alignment = "center";

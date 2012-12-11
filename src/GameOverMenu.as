@@ -12,8 +12,11 @@ package
 		public function GameOverMenu() 
 		{
 			FlxG.mouse.load();
+			
 			FlxG.music.stop();
-			FlxG.play(MusicMode);
+			if(Registry.options.sound)
+				FlxG.play(MusicMode);
+			
 			restartButton = new FlxButton(FlxG.width/2 - 40, FlxG.height/2 - 10, "Restart", restartGame);
 			add(restartButton);
 			
