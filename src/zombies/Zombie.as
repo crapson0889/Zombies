@@ -45,7 +45,8 @@ package zombies
 			velocity.y = gravity;
 			lastDirection = direction;
 			exists = true;
-			FlxG.play(spawnSND); //Play Zombie Spawn Sound
+			if(Registry.options.sound)
+				FlxG.play(spawnSND); //Play Zombie Spawn Sound
 		}
 		
 		override public function update():void 

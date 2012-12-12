@@ -28,8 +28,6 @@ package zombies
 		{			
 			currentDirection = currentDirection * -1;
 			
-			
-			
 			if (getFirstAvailable())
 			{
 				var rand:uint = Math.floor(Math.random() * 3);
